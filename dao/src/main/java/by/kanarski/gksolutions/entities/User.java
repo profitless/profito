@@ -61,17 +61,9 @@ public class User extends AbstractEntity {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Column(nullable = false)
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     @Column
@@ -79,17 +71,9 @@ public class User extends AbstractEntity {
         return middleName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
     @Column(nullable = false)
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     @ManyToMany
@@ -110,17 +94,9 @@ public class User extends AbstractEntity {
         return phoneSet;
     }
 
-    public void setPhoneSet(Set<Phone> phoneSet) {
-        this.phoneSet = phoneSet;
-    }
-
     @ManyToOne
     public Company getCompany() {
         return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     @OneToMany
@@ -128,26 +104,14 @@ public class User extends AbstractEntity {
         return childUsersSet;
     }
 
-    public void setChildUsersSet(Set<User> childUsersSet) {
-        this.childUsersSet = childUsersSet;
-    }
-
     @ManyToOne
     public User getParentUser() {
         return parentUser;
     }
 
-    public void setParentUser(User parentUser) {
-        this.parentUser = parentUser;
-    }
-
     @Column(nullable = false)
     public Timestamp getCreateTime() {
         return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
     }
 
     @Column(
@@ -158,17 +122,9 @@ public class User extends AbstractEntity {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Column(unique = true)
     public String getSkype() {
         return skype;
-    }
-
-    public void setSkype(String skype) {
-        this.skype = skype;
     }
 
     @ManyToMany
@@ -189,10 +145,6 @@ public class User extends AbstractEntity {
         return roleSet;
     }
 
-    public void setRoleSet(Set<Role> roleSet) {
-        this.roleSet = roleSet;
-    }
-
     @ManyToOne
     @JoinColumn(
             name = "status_id",
@@ -201,10 +153,6 @@ public class User extends AbstractEntity {
     )
     public Status getUserStatus() {
         return userStatus;
-    }
-
-    public void setUserStatus(Status userStatus) {
-        this.userStatus = userStatus;
     }
 
     public enum Fields {firstName, middleName, lastName, email, password, skype, phoneSet, company, childUsersSet, parentUser, createTime, roleSet, userStatus, serialVersionUID}
