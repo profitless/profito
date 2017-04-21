@@ -1,6 +1,7 @@
 package by.kanarski.gksolutions.entities;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -15,27 +16,24 @@ import javax.persistence.Entity;
 
 @Entity
 @AttributeOverride(name = "id", column = @Column(name = "phone_type_id"))
+@Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class PhoneType extends AbstractEntity {
 
+    private static final long serialVersionUID = -8395262742931308553L;
     private String phoneTypeName;
 
     @Builder
     public PhoneType(Integer phoneTypeId, String phoneTypeName) {
-        setId(phoneTypeId);
+        super(phoneTypeId);
         this.phoneTypeName = phoneTypeName;
     }
 
-    @Column(
-            unique = true,
-            nullable = false
-    )
+    @Column(nullable = false, length = 45)
     public String getPhoneTypeName() {
         return phoneTypeName;
     }
 
-    public void setPhoneTypeName(String phoneTypeName) {
-        this.phoneTypeName = phoneTypeName;
-    }
+    public enum Fields {phoneTypeName, serialVersionUID}
 }

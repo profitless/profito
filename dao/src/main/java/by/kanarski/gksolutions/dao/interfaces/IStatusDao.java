@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.interfaces;
 
-import by.kanarski.gksolutions.entities.Status;
+import by.kanarski.gksolutions.entities.UserStatus;
 
 /**
  * Language dao iterface
@@ -9,6 +9,6 @@ import by.kanarski.gksolutions.entities.Status;
  * @see IBaseDao
  */
 
-public interface IStatusDao extends IExtendedBaseDao<Status> {
+public interface IStatusDao extends IExtendedBaseDao<UserStatus> {
 
 }

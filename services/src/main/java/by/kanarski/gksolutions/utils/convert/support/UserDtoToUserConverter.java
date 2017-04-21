@@ -29,11 +29,11 @@ public class UserDtoToUserConverter extends EntityConverter<UserDto, User> {
         Set<User> childUsersSet = getMapper().map(userDto.getChildUsersSet(), User.class);
         User parentUser = getMapper().map(userDto.getParentUser(), User.class);
         Timestamp createTime = new Timestamp(userDto.getCreateTime().getTime());
-        Set<Role> roleSet = getMapper().map(userDto.getRoleSet(), Role.class);
-        Status userStatus = getMapper().map(userDto.getUserStatus(), Status.class);
+        Set<UserFunction> userFunctionSet = getMapper().map(userDto.getRoleSet(), UserFunction.class);
+        UserStatus userUserStatus = getMapper().map(userDto.getUserStatus(), UserStatus.class);
         return User.builder().userId(userId).firstName(firstName).middleName(middleName).lastName(lastName).email(email)
                 .password(password).skype(skype).phoneSet(phoneSet).company(company).childUsersSet(childUsersSet)
-                .parentUser(parentUser).createTime(createTime).roleSet(roleSet).userStatus(userStatus).build();
+                .parentUser(parentUser).createTime(createTime).roleSet(userFunctionSet).userStatus(userUserStatus).build();
 
     }
 }

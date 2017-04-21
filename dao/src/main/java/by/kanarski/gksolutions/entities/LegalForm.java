@@ -21,6 +21,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class LegalForm extends AbstractEntity {
 
+    private static final long serialVersionUID = -4983961249871024646L;
     private String legalFormName;
     private String legalFormNameShort;
 
@@ -31,13 +32,15 @@ public class LegalForm extends AbstractEntity {
         this.legalFormNameShort = legalFormNameShort;
     }
 
-    @Column
+    @Column(length = 100)
     public String getLegalFormName() {
         return legalFormName;
     }
 
-    @Column
+    @Column(length = 10)
     public String getLegalFormNameShort() {
         return legalFormNameShort;
     }
+
+    public enum Fields {legalFormName, legalFormNameShort, serialVersionUID}
 }

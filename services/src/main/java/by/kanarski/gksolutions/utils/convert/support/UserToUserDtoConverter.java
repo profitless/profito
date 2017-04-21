@@ -21,11 +21,11 @@ public class UserToUserDtoConverter extends EntityConverter<User, UserDto> {
     @Override
     public UserDto convert(User user) {
         Integer userId = user.getId();
-        String firstName = user.getFirstName();
-        String middleName = user.getMiddleName();
-        String lastName = user.getLastName();
-        String email = user.getEmail();
-        String password = user.getPassword();
+        String firstName = user.getUserFirstName();
+        String middleName = user.getUserFatherName();
+        String lastName = user.getUserLastName();
+        String email = user.getUserEmail();
+        String password = user.getUserPassword();
         String skype = user.getSkype();
         Set<PhoneDto> phoneDtoSet = getMapper().map(user.getPhoneSet(), PhoneDto.class);
         CompanyDto companyDto = getMapper().map(user.getCompany(), CompanyDto.class);
@@ -33,13 +33,13 @@ public class UserToUserDtoConverter extends EntityConverter<User, UserDto> {
         Set<UserDto> childUserDtosSet = CollectionUtils.isNotEmpty(childUsersSet)
                 ? getMapper().map(childUsersSet, UserDto.class)
                 : null;
-        User parentUser = user.getParentUser();
+        User parentUser = user.getUserParent();
         UserDto parentUserDto = (parentUser != null)
                 ? getMapper().map(parentUser, UserDto.class)
                 : null;
-        Date createTime = user.getCreateTime();
-        Set<String> roleSet = getMapper().map(user.getRoleSet(), String.class);
-        String userStatus = getMapper().map(user.getUserStatus(), String.class);
+        Date createTime = user.getUserCreateTime();
+        Set<String> roleSet = getMapper().map(user.getUserFunctionSet(), String.class);
+        String userStatus = getMapper().map(user.getUserUserStatus(), String.class);
         return UserDto.builder().userId(userId).firstName(firstName).middleName(middleName).lastName(lastName)
                 .email(email).password(password).skype(skype).phoneSet(phoneDtoSet).company(companyDto)
                 .childUsersSet(childUserDtosSet).parentUser(parentUserDto).createTime(createTime).roleSet(roleSet)

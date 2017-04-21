@@ -1,7 +1,5 @@
 package by.kanarski.gksolutions.services.interfaces;
 
-import by.kanarski.gksolutions.entities.Language;
-
 /**
  * Language service interface
  * @author Dzmitry Kanarski

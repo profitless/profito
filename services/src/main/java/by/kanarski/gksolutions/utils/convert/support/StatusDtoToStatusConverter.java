@@ -2,7 +2,7 @@ package by.kanarski.gksolutions.utils.convert.support;
 
 
 import by.kanarski.gksolutions.dto.StatusDto;
-import by.kanarski.gksolutions.entities.Status;
+import by.kanarski.gksolutions.entities.UserStatus;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StatusDtoToStatusConverter extends EntityConverter<StatusDto, Status> {
+public class StatusDtoToStatusConverter extends EntityConverter<StatusDto, UserStatus> {
 
     @Override
-    public Status convert(StatusDto statusDto) {
+    public UserStatus convert(StatusDto statusDto) {
         Integer stateId = statusDto.getStatusId();
         String stateName = statusDto.getStatusName();
-        return Status.builder().statusId(stateId).statusName(stateName).build();
+        return UserStatus.builder().statusId(stateId).statusName(stateName).build();
     }
 }

@@ -1,5 +1,6 @@
 package by.kanarski.gksolutions.entities;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,22 +22,32 @@ public class Adress extends AbstractEntity {
     private static final long serialVersionUID = 2863736577363347459L;
     private String adressZipcode;
     private String adressFull;
-    private Integer adressType;
+    private Byte adressType;
     private Country country;
     private Region region;
 
-    @Column(nullable = false)
+    @Builder
+    public Adress(Integer adressId, String adressZipcode, String adressFull, Byte adressType, Country country, Region region) {
+        super(adressId);
+        this.adressZipcode = adressZipcode;
+        this.adressFull = adressFull;
+        this.adressType = adressType;
+        this.country = country;
+        this.region = region;
+    }
+
+    @Column(nullable = false, length = 10)
     public String getAdressZipcode() {
         return adressZipcode;
     }
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 150)
     public String getAdressFull() {
         return adressFull;
     }
 
     @Column(nullable = false)
-    public Integer getAdressType() {
+    public Byte getAdressType() {
         return adressType;
     }
 
@@ -59,4 +70,6 @@ public class Adress extends AbstractEntity {
     public Region getRegion() {
         return region;
     }
+
+    public enum Fields {adressZipcode, adressFull, adressType, country, region, serialVersionUID}
 }

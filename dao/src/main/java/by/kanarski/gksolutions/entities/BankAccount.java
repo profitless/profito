@@ -5,6 +5,6 @@ package by.kanarski.gksolutions.entities;
  * @version 1.0
  */
 
-// TODO: 20.04.2017 Не знаю
-public class Region {
+// TODO: 21.04.2017 Не мое
+public class BankAccount {
 }

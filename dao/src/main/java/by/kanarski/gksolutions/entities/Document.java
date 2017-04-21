@@ -1,5 +1,6 @@
 package by.kanarski.gksolutions.entities;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,18 @@ public class Document extends AbstractEntity {
     private Timestamp createDate;
     private DocumentStatus documentStatus;
 
-    @Column(nullable = false)
+    @Builder
+    public Document(Integer documentId, String documentName, Blob documentFile, String documentInfo,
+                    Timestamp createDate, DocumentStatus documentStatus) {
+        super(documentId);
+        this.documentName = documentName;
+        this.documentFile = documentFile;
+        this.documentInfo = documentInfo;
+        this.createDate = createDate;
+        this.documentStatus = documentStatus;
+    }
+
+    @Column(nullable = false, length = 100)
     public String getDocumentName() {
         return documentName;
     }
@@ -56,4 +68,6 @@ public class Document extends AbstractEntity {
     public DocumentStatus getDocumentStatus() {
         return documentStatus;
     }
+
+    public enum Fields {documentName, documentFile, documentInfo, createDate, documentStatus, serialVersionUID}
 }

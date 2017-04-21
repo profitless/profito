@@ -2,7 +2,6 @@ package by.kanarski.gksolutions.services.impl;
 
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dao.interfaces.ILanguageDao;
-import by.kanarski.gksolutions.entities.Language;
 import by.kanarski.gksolutions.services.interfaces.ILanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

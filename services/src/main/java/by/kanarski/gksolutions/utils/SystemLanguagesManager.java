@@ -1,7 +1,6 @@
 package by.kanarski.gksolutions.utils;
 
 import by.kanarski.gksolutions.dao.interfaces.ILanguageDao;
-import by.kanarski.gksolutions.entities.Language;
 import by.kanarski.gksolutions.utils.wrappers.SystemLanguages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

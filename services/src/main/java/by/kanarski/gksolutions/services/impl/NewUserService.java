@@ -3,7 +3,6 @@ package by.kanarski.gksolutions.services.impl;
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dao.interfaces.INewUserDao;
 import by.kanarski.gksolutions.dto.user.NewUserDto;
-import by.kanarski.gksolutions.entities.NewUser;
 import by.kanarski.gksolutions.services.interfaces.INewUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

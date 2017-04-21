@@ -1,6 +1,7 @@
 package by.kanarski.gksolutions.entities;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -16,110 +17,113 @@ import java.util.Set;
 
 @Entity
 @AttributeOverride(name = "id", column = @Column(name = "user_id"))
+@Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class User extends AbstractEntity {
 
-    private static final long serialVersionUID = 755092399090937570L;
-
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String email;
-    private String password;
+    private static final long serialVersionUID = 3760054555990552525L;
+    private String userEmail;
+    private String userPassword;
+    private Byte userIsLocked;
+    private Company company;
+    private String userFirstName;
+    private String userFatherName;
+    private String userLastName;
+    private Timestamp userCreateTime;
+    private User userParent;
+//    private Set<User> childUsersSet;
+    private Integer userChildQuantity;
     private String skype;
     private Set<Phone> phoneSet;
-    private Company company;
-    private Set<User> childUsersSet;
-    private User parentUser;
-    private Timestamp createTime;
-    private Set<Role> roleSet;
-    private Status userStatus;
+    private Set<UserFunction> userFunctionSet;
+    private UserStatus userUserStatus;
 
     @Builder
-    public User(Integer userId, String password, String firstName, String middleName, String lastName, String email,
-                String skype, Set<Phone> phoneSet, Company company, Set<User> childUsersSet, User parentUser,
-                Timestamp createTime, Set<Role> roleSet, Status userStatus) {
+    public User(Integer userId, String userEmail, String userPassword, Byte userIsLocked, Company company,
+                String userFirstName, String userFatherName, String userLastName, Timestamp userCreateTime,
+                User userParent, Integer userChildQuantity, String skype, Set<Phone> phoneSet,
+                Set<UserFunction> userFunctionSet, UserStatus userUserStatus) {
         super(userId);
-        this.password = password;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.email = email;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userIsLocked = userIsLocked;
+        this.company = company;
+        this.userFirstName = userFirstName;
+        this.userFatherName = userFatherName;
+        this.userLastName = userLastName;
+        this.userCreateTime = userCreateTime;
+        this.userParent = userParent;
+        this.userChildQuantity = userChildQuantity;
         this.skype = skype;
         this.phoneSet = phoneSet;
-        this.company = company;
-        this.childUsersSet = childUsersSet;
-        this.parentUser = parentUser;
-        this.createTime = createTime;
-        this.roleSet = roleSet;
-        this.userStatus = userStatus;
+        this.userFunctionSet = userFunctionSet;
+        this.userUserStatus = userUserStatus;
+    }
+
+    @Column(nullable = false, length = 40)
+    public String getUserEmail() {
+        return userEmail;
     }
 
     @Column(nullable = false)
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
     @Column(nullable = false)
-    public String getFirstName() {
-        return firstName;
-    }
-
-    @Column
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    @Column(nullable = false)
-    public String getLastName() {
-        return lastName;
-    }
-
-    @ManyToMany
-    @JoinTable(
-            name = "user_phones",
-            joinColumns = @JoinColumn(
-                    name = "user_id",
-                    nullable = false,
-                    foreignKey = @ForeignKey(name = "fk_user_phone")
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "phone_id",
-                    nullable = false,
-                    foreignKey = @ForeignKey(name = "fk_phone_user")
-            )
-    )
-    public Set<Phone> getPhoneSet() {
-        return phoneSet;
+    public Byte getUserIsLocked() {
+        return userIsLocked;
     }
 
     @ManyToOne
+    @JoinColumn(
+            name = "company_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_r_user_h_company1")
+    )
     public Company getCompany() {
         return company;
     }
 
-    @OneToMany
-    public Set<User> getChildUsersSet() {
-        return childUsersSet;
+    @Column(nullable = false, length = 30)
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    @ManyToOne
-    public User getParentUser() {
-        return parentUser;
+    @Column(length = 30)
+    public String getUserFatherName() {
+        return userFatherName;
+    }
+
+    @Column(nullable = false, length = 30)
+    public String getUserLastName() {
+        return userLastName;
     }
 
     @Column(nullable = false)
-    public Timestamp getCreateTime() {
-        return createTime;
+    public Timestamp getUserCreateTime() {
+        return userCreateTime;
     }
 
-    @Column(
-            unique = true,
-            nullable = false
+    @ManyToOne
+    @JoinColumn(
+            name = "user_parent_id",
+            nullable = true,
+            foreignKey = @ForeignKey(name = "fk_r_user_r_user1")
     )
-    public String getEmail() {
-        return email;
+    public User getUserParent() {
+        return userParent;
+    }
+
+//    @OneToMany
+//    public Set<User> getChildUsersSet() {
+//        return childUsersSet;
+//    }
+
+    @Column
+    public Integer getUserChildQuantity() {
+        return userChildQuantity;
     }
 
     @Column(unique = true)
@@ -129,31 +133,53 @@ public class User extends AbstractEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "user_user_roles",
+            name = "nn_user_phone",
             joinColumns = @JoinColumn(
                     name = "user_id",
                     nullable = false,
-                    foreignKey = @ForeignKey(name = "fk_user_phone")
+                    foreignKey = @ForeignKey(name = "fk_nn_user_info_phone_h_phone1")
             ),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id",
+                    name = "phone_id",
                     nullable = false,
-                    foreignKey = @ForeignKey(name = "fk_role_user")
+                    foreignKey = @ForeignKey(name = "fk_nn_user_phone_r_user1")
             )
     )
-    public Set<Role> getRoleSet() {
-        return roleSet;
+    public Set<Phone> getPhoneSet() {
+        return phoneSet;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "nn_user_user_function",
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    nullable = false,
+                    foreignKey = @ForeignKey(
+                            name = "fk_nn_user_user_function_c_user_function1"
+                    )
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "user_function_id",
+                    nullable = false,
+                    foreignKey = @ForeignKey(
+                            name = "fk_nn_user_user_function_r_user1"
+                    )
+            )
+    )
+    public Set<UserFunction> getUserFunctionSet() {
+        return userFunctionSet;
     }
 
     @ManyToOne
     @JoinColumn(
-            name = "status_id",
+            name = "user_status_id",
             nullable = false,
-            foreignKey = @ForeignKey(name = "fk_user_status")
+            foreignKey = @ForeignKey(name = "fk_r_user_c_user_status1")
     )
-    public Status getUserStatus() {
-        return userStatus;
+    public UserStatus getUserUserStatus() {
+        return userUserStatus;
     }
 
-    public enum Fields {firstName, middleName, lastName, email, password, skype, phoneSet, company, childUsersSet, parentUser, createTime, roleSet, userStatus, serialVersionUID}
+    public enum Fields {userEmail, userPassword, userIsLocked, company, userFirstName, userFatherName, userLastName, userCreateTime, userParent, userChildQuantity, skype, phoneSet, userFunctionSet, userUserStatus, serialVersionUID}
 }
