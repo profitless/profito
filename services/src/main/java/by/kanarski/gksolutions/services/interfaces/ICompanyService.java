@@ -1,7 +1,7 @@
 package by.kanarski.gksolutions.services.interfaces;
 
 import by.kanarski.gksolutions.dto.CompanyDto;
-import by.kanarski.gksolutions.entities.Company;
+import by.kanarski.gksolutions.entities.registry.Company;
 
 /**
  * @author Dzmitry Kanarski

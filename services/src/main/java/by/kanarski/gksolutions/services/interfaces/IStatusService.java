@@ -1,7 +1,7 @@
 package by.kanarski.gksolutions.services.interfaces;
 
 import by.kanarski.gksolutions.dto.StatusDto;
-import by.kanarski.gksolutions.entities.UserStatus;
+import by.kanarski.gksolutions.entities.catalog.UserStatus;
 
 /**
  * Language service interface

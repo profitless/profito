@@ -1,7 +1,7 @@
 package by.kanarski.gksolutions.services.interfaces;
 
 import by.kanarski.gksolutions.dto.PhoneDto;
-import by.kanarski.gksolutions.entities.Phone;
+import by.kanarski.gksolutions.entities.handbook.Phone;
 
 /**
  * @author Dzmitry Kanarski

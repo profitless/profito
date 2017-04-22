@@ -3,7 +3,7 @@ package by.kanarski.gksolutions.services.impl;
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dao.interfaces.IPhoneDao;
 import by.kanarski.gksolutions.dto.PhoneDto;
-import by.kanarski.gksolutions.entities.Phone;
+import by.kanarski.gksolutions.entities.handbook.Phone;
 import by.kanarski.gksolutions.services.interfaces.IPhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

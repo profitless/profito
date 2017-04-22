@@ -3,7 +3,7 @@ package by.kanarski.gksolutions.services.impl;
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dao.interfaces.IStatusDao;
 import by.kanarski.gksolutions.dto.StatusDto;
-import by.kanarski.gksolutions.entities.UserStatus;
+import by.kanarski.gksolutions.entities.catalog.UserStatus;
 import by.kanarski.gksolutions.services.interfaces.IStatusService;
 import by.kanarski.gksolutions.utils.criteria.Restrictions;
 import by.kanarski.gksolutions.utils.criteria.SearchFilter;

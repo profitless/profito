@@ -3,7 +3,7 @@ package by.kanarski.gksolutions.utils.convert.support;
 import by.kanarski.gksolutions.dto.CompanyDto;
 import by.kanarski.gksolutions.dto.PhoneDto;
 import by.kanarski.gksolutions.dto.user.UserDto;
-import by.kanarski.gksolutions.entities.User;
+import by.kanarski.gksolutions.entities.registry.User;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 

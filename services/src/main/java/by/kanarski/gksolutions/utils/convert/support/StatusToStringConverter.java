@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.utils.convert.support;
 
-import by.kanarski.gksolutions.entities.UserStatus;
+import by.kanarski.gksolutions.entities.catalog.UserStatus;
 import org.springframework.stereotype.Component;
 
 /**

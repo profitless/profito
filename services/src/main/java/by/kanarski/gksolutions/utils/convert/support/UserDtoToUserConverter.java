@@ -1,7 +1,11 @@
 package by.kanarski.gksolutions.utils.convert.support;
 
 import by.kanarski.gksolutions.dto.user.UserDto;
-import by.kanarski.gksolutions.entities.*;
+import by.kanarski.gksolutions.entities.catalog.UserFunction;
+import by.kanarski.gksolutions.entities.catalog.UserStatus;
+import by.kanarski.gksolutions.entities.handbook.Phone;
+import by.kanarski.gksolutions.entities.registry.Company;
+import by.kanarski.gksolutions.entities.registry.User;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;

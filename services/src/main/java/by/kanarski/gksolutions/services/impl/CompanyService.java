@@ -3,7 +3,7 @@ package by.kanarski.gksolutions.services.impl;
 import by.kanarski.gksolutions.dao.interfaces.ICompanyDao;
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dto.CompanyDto;
-import by.kanarski.gksolutions.entities.Company;
+import by.kanarski.gksolutions.entities.registry.Company;
 import by.kanarski.gksolutions.services.interfaces.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,7 @@ import by.kanarski.gksolutions.constants.StateValue;
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dao.interfaces.IUserDao;
 import by.kanarski.gksolutions.dto.user.UserDto;
-import by.kanarski.gksolutions.entities.User;
+import by.kanarski.gksolutions.entities.registry.User;
 import by.kanarski.gksolutions.services.interfaces.ICompanyService;
 import by.kanarski.gksolutions.services.interfaces.IPhoneService;
 import by.kanarski.gksolutions.services.interfaces.IUserService;
