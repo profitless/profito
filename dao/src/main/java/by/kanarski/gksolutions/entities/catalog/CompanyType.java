@@ -1,5 +1,6 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.catalog;
 
+import by.kanarski.gksolutions.entities.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  * @author Dzmitry Kanarski

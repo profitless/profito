@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.interfaces;
 
-import by.kanarski.gksolutions.entities.User;
+import by.kanarski.gksolutions.entities.registry.User;
 
 /**
  * User dao interface

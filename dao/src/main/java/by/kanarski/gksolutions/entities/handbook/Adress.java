@@ -1,5 +1,8 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.handbook;
 
+import by.kanarski.gksolutions.entities.AbstractEntity;
+import by.kanarski.gksolutions.entities.Region;
+import by.kanarski.gksolutions.entities.handbook.Country;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

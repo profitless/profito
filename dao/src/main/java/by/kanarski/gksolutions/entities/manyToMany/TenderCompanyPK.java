@@ -1,7 +1,7 @@
 package by.kanarski.gksolutions.entities.manyToMany;
 
-import by.kanarski.gksolutions.entities.Company;
-import by.kanarski.gksolutions.entities.Tender;
+import by.kanarski.gksolutions.entities.registry.Company;
+import by.kanarski.gksolutions.entities.registry.Tender;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,4 +1,4 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.catalog;
 
 /**
  * @author Dzmitry Kanarski

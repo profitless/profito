@@ -1,9 +1,8 @@
 package by.kanarski.gksolutions.entities.manyToMany;
 
-import by.kanarski.gksolutions.entities.Auction;
-import by.kanarski.gksolutions.entities.Company;
+import by.kanarski.gksolutions.entities.registry.Auction;
+import by.kanarski.gksolutions.entities.registry.Company;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;

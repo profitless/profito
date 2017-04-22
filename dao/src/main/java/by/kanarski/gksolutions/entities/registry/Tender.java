@@ -1,4 +1,4 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.registry;
 
 import by.kanarski.gksolutions.entities.manyToMany.TenderCompany;
 import lombok.Data;

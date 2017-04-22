@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.interfaces;
 
-import by.kanarski.gksolutions.entities.Phone;
+import by.kanarski.gksolutions.entities.handbook.Phone;
 
 /**
  * @author Dzmitry Kanarski

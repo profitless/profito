@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.interfaces;
 
-import by.kanarski.gksolutions.entities.UserStatus;
+import by.kanarski.gksolutions.entities.catalog.UserStatus;
 
 /**
  * Language dao iterface

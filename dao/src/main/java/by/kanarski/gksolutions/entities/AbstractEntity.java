@@ -16,7 +16,7 @@ import java.io.Serializable;
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-abstract class AbstractEntity implements Serializable {
+public abstract class AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 5677570538293781869L;
 

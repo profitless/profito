@@ -1,5 +1,9 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.registry;
 
+import by.kanarski.gksolutions.entities.AbstractEntity;
+import by.kanarski.gksolutions.entities.catalog.UserFunction;
+import by.kanarski.gksolutions.entities.catalog.UserStatus;
+import by.kanarski.gksolutions.entities.handbook.Phone;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

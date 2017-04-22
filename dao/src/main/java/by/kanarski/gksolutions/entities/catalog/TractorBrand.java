@@ -1,5 +1,6 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.catalog;
 
+import by.kanarski.gksolutions.entities.AbstractEntity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

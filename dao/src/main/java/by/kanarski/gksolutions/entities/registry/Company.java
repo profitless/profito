@@ -1,5 +1,9 @@
-package by.kanarski.gksolutions.entities;
+package by.kanarski.gksolutions.entities.registry;
 
+import by.kanarski.gksolutions.entities.*;
+import by.kanarski.gksolutions.entities.catalog.CompanyType;
+import by.kanarski.gksolutions.entities.catalog.LegalForm;
+import by.kanarski.gksolutions.entities.handbook.*;
 import by.kanarski.gksolutions.entities.manyToMany.AuctionCompany;
 import by.kanarski.gksolutions.entities.manyToMany.TenderCompany;
 import lombok.Builder;
