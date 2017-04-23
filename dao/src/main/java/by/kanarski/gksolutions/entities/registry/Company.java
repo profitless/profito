@@ -28,10 +28,10 @@ import java.util.Set;
 public class Company extends AbstractEntity {
 
     private static final long serialVersionUID = -7155231707204319958L;
-    private Byte companyIsLocked;
+    private Boolean companyIsLocked;
     private String companyName;
     private Country country;
-    private Region region;
+    private Integer regionId;
     private Document document;
     private Expeditor expeditor;
     private Forwarder forwarder;
@@ -39,12 +39,14 @@ public class Company extends AbstractEntity {
     private Adress factAdress;
     private Adress postAdress;
     private CompanyType companyType;
+//    Это инн
     private String companyRegistrationNumber;
+//    Это ОКПО
     private String companyAdditionNumber;
     private Integer companyTariffPlan;
     private Double companyBallance;
     private String companySite;
-    private Byte companyIsDebt;
+    private Boolean companyIsDebt;
     private Date companyLockDate;
     private Double companyKPI;
     private LegalForm legalForm;
@@ -54,11 +56,11 @@ public class Company extends AbstractEntity {
     private Set<BankAccount> companyBankAccount;
 
     @Builder
-    public Company(Integer companyId, Byte companyIsLocked, String companyName, Country country,
-                   Region region, Document document, Expeditor expeditor, Forwarder forwarder,
+    public Company(Integer companyId, Boolean companyIsLocked, String companyName, Country country,
+                   Integer regionId, Document document, Expeditor expeditor, Forwarder forwarder,
                    Adress jurAdress, Adress factAdress, Adress postAdress, CompanyType companyType,
                    String companyRegistrationNumber, String companyAdditionNumber, Integer companyTariffPlan,
-                   Double companyBallance, String companySite, Byte companyIsDebt, Date companyLockDate,
+                   Double companyBallance, String companySite, Boolean companyIsDebt, Date companyLockDate,
                    Double companyKPI, LegalForm legalForm, Set<AuctionCompany> auctionCompanySet,
                    Set<TenderCompany> tenderCompanySet, Set<Phone> companyPhoneSet,
                    Set<BankAccount> companyBankAccount) {
@@ -66,7 +68,7 @@ public class Company extends AbstractEntity {
         this.companyIsLocked = companyIsLocked;
         this.companyName = companyName;
         this.country = country;
-        this.region = region;
+        this.regionId = regionId;
         this.document = document;
         this.expeditor = expeditor;
         this.forwarder = forwarder;
@@ -94,8 +96,8 @@ public class Company extends AbstractEntity {
         return companyName;
     }
 
-    @Column(nullable = false)
-    public Byte getCompanyIsLocked() {
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getCompanyIsLocked() {
         return companyIsLocked;
     }
 
@@ -109,14 +111,9 @@ public class Company extends AbstractEntity {
         return country;
     }
 
-    @ManyToOne
-    @JoinColumn(
-            name = "region_id",
-            nullable = true,
-            foreignKey = @ForeignKey(name = "fk_h_company_info_c_region1")
-    )
-    public Region getRegion() {
-        return region;
+    @Column
+    public Integer getRegionId() {
+        return regionId;
     }
 
     @ManyToOne
@@ -214,8 +211,8 @@ public class Company extends AbstractEntity {
         return companySite;
     }
 
-    @Column(nullable = false)
-    public Byte getCompanyIsDebt() {
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getCompanyIsDebt() {
         return companyIsDebt;
     }
 

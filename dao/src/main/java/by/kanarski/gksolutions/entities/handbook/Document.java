@@ -25,17 +25,17 @@ public class Document extends AbstractEntity {
 
     private static final long serialVersionUID = -9101128038856055219L;
     private String documentName;
-    private Blob documentFile;
+    private Blob documentContent;
     private String documentInfo;
     private Timestamp createDate;
     private DocumentStatus documentStatus;
 
     @Builder
-    public Document(Integer documentId, String documentName, Blob documentFile, String documentInfo,
+    public Document(Integer documentId, String documentName, Blob documentContent, String documentInfo,
                     Timestamp createDate, DocumentStatus documentStatus) {
         super(documentId);
         this.documentName = documentName;
-        this.documentFile = documentFile;
+        this.documentContent = documentContent;
         this.documentInfo = documentInfo;
         this.createDate = createDate;
         this.documentStatus = documentStatus;
@@ -47,8 +47,8 @@ public class Document extends AbstractEntity {
     }
 
     @Column(nullable = false)
-    public Blob getDocumentFile() {
-        return documentFile;
+    public Blob getDocumentContent() {
+        return documentContent;
     }
 
     @Column(nullable = true)
@@ -71,5 +71,5 @@ public class Document extends AbstractEntity {
         return documentStatus;
     }
 
-    public enum Fields {documentName, documentFile, documentInfo, createDate, documentStatus, serialVersionUID}
+    public enum Fields {documentName, documentContent, documentInfo, createDate, documentStatus, serialVersionUID}
 }

@@ -1,8 +1,6 @@
 package by.kanarski.gksolutions.entities.handbook;
 
 import by.kanarski.gksolutions.entities.AbstractEntity;
-import by.kanarski.gksolutions.entities.Region;
-import by.kanarski.gksolutions.entities.handbook.Country;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,16 +25,17 @@ public class Adress extends AbstractEntity {
     private String adressFull;
     private Byte adressType;
     private Country country;
-    private Region region;
+    private Integer regionId;
 
     @Builder
-    public Adress(Integer adressId, String adressZipcode, String adressFull, Byte adressType, Country country, Region region) {
+    public Adress(Integer adressId, String adressZipcode, String adressFull, Byte adressType, Country country,
+                  Integer regionId) {
         super(adressId);
         this.adressZipcode = adressZipcode;
         this.adressFull = adressFull;
         this.adressType = adressType;
         this.country = country;
-        this.region = region;
+        this.regionId = regionId;
     }
 
     @Column(nullable = false, length = 10)
@@ -64,15 +63,10 @@ public class Adress extends AbstractEntity {
         return country;
     }
 
-    @ManyToOne
-    @JoinColumn(
-            name = "region_id",
-            nullable = true,
-            foreignKey = @ForeignKey(name = "fk_h_adress_c_region1")
-    )
-    public Region getRegion() {
-        return region;
+    @Column
+    public Integer getRegionId() {
+        return regionId;
     }
 
-    public enum Fields {adressZipcode, adressFull, adressType, country, region, serialVersionUID}
+    public enum Fields {adressZipcode, adressFull, adressType, country, regionId, serialVersionUID}
 }

@@ -26,12 +26,12 @@ public class Tractor extends AbstractEntity {
     private TractorBrand tractorBrand;
     private Forwarder forwarder;
     private String tractorPlate;
-    private Byte tractorIsLeased;
+    private Boolean tractorIsLeased;
     private Document document;
 
     @Builder
     public Tractor(Integer tractorId, TractorBrand tractorBrand, Forwarder forwarder,
-                   String tractorPlate, Byte tractorIsLeased, Document document) {
+                   String tractorPlate, Boolean tractorIsLeased, Document document) {
         super(tractorId);
         this.tractorBrand = tractorBrand;
         this.forwarder = forwarder;
@@ -65,8 +65,8 @@ public class Tractor extends AbstractEntity {
         return tractorPlate;
     }
 
-    @Column(nullable = false)
-    public Byte getTractorIsLeased() {
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getTractorIsLeased() {
         return tractorIsLeased;
     }
 

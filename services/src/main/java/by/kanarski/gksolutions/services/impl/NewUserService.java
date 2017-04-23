@@ -1,8 +1,7 @@
 package by.kanarski.gksolutions.services.impl;
 
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
-import by.kanarski.gksolutions.dao.interfaces.INewUserDao;
-import by.kanarski.gksolutions.dto.user.NewUserDto;
+import by.kanarski.gksolutions.dto.user.FirstUserDto;
 import by.kanarski.gksolutions.services.interfaces.INewUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
-public class NewUserService extends BaseService<NewUser, NewUserDto> implements INewUserService {
+public class NewUserService extends BaseService<NewUser, FirstUserDto> implements INewUserService {
 
     @Autowired
     private INewUserDao newUserDao;

@@ -1,6 +1,7 @@
 package by.kanarski.gksolutions.entities.catalog;
 
 import by.kanarski.gksolutions.entities.AbstractEntity;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,11 +22,19 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class CompanyType extends AbstractEntity {
 
-    private static final long serialVersionUID = 8654143971583271601L;
+    private static final long serialVersionUID = 2620672492276264928L;
     private String companyTypeName;
 
-    @Column(unique = true, nullable = false)
+    @Builder
+    public CompanyType(Integer companyTypeId, String companyTypeName) {
+        super(companyTypeId);
+        this.companyTypeName = companyTypeName;
+    }
+
+    @Column(nullable = false, length = 45)
     public String getCompanyTypeName() {
         return companyTypeName;
     }
+
+    public enum Fields {companyTypeName, serialVersionUID}
 }

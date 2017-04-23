@@ -23,10 +23,10 @@ public class Forwarder extends AbstractEntity {
 
     private static final long serialVersionUID = -5951149269498146782L;
     private Policy policy;
-    private Byte forwarderIsInsured;
+    private Boolean forwarderIsInsured;
 
     @Builder
-    public Forwarder(Integer forwarderId, Policy policy, Byte forwarderIsInsured) {
+    public Forwarder(Integer forwarderId, Policy policy, Boolean forwarderIsInsured) {
         super(forwarderId);
         this.policy = policy;
         this.forwarderIsInsured = forwarderIsInsured;
@@ -42,8 +42,8 @@ public class Forwarder extends AbstractEntity {
         return policy;
     }
 
-    @Column(nullable = false)
-    public Byte getForwarderIsInsured() {
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getForwarderIsInsured() {
         return forwarderIsInsured;
     }
 

@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.services.impl;
 
-import by.kanarski.gksolutions.dao.interfaces.ICompanyDao;
+import by.kanarski.gksolutions.dao.interfaces.catalog.ICompanyDao;
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.dto.CompanyDto;
 import by.kanarski.gksolutions.entities.registry.Company;

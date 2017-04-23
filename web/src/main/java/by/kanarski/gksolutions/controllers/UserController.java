@@ -2,7 +2,7 @@ package by.kanarski.gksolutions.controllers;
 
 import by.kanarski.gksolutions.constants.Pages;
 import by.kanarski.gksolutions.constants.Parameter;
-import by.kanarski.gksolutions.dto.user.NewUserDto;
+import by.kanarski.gksolutions.dto.user.FirstUserDto;
 import by.kanarski.gksolutions.services.interfaces.INewUserService;
 import by.kanarski.gksolutions.utils.SystemLogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +42,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> registerUser(@RequestBody NewUserDto newUserDto, BindingResult bindingResult, Model model) {
+    public ResponseEntity<?> registerUser(@RequestBody FirstUserDto firstUserDto, BindingResult bindingResult, Model model) {
         HttpHeaders headers = new HttpHeaders();
         if (bindingResult.hasErrors()) {
             List<FieldError> errorList = bindingResult.getFieldErrors();
@@ -50,7 +50,7 @@ public class UserController {
             headers.add("Response-Status", "validation error");
             return new ResponseEntity<>(errorList, headers, HttpStatus.OK);
         }
-        newUserService.add(newUserDto);
+        newUserService.add(firstUserDto);
         return new ResponseEntity<>("Succesful created", HttpStatus.CREATED);
     }
 

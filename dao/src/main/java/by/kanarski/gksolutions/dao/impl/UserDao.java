@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.impl;
 
-import by.kanarski.gksolutions.dao.interfaces.IUserDao;
+import by.kanarski.gksolutions.dao.interfaces.registry.IUserDao;
 import by.kanarski.gksolutions.entities.registry.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

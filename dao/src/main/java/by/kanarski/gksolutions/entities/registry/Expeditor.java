@@ -23,11 +23,11 @@ public class Expeditor extends AbstractEntity {
 
     private static final long serialVersionUID = -7302690254029709364L;
     private Policy policy;
-    private Byte expeditorIsInsured;
+    private Boolean expeditorIsInsured;
     private String expeditorInfo;
 
     @Builder
-    public Expeditor(Integer expeditorId, Policy policy, Byte expeditorIsInsured, String expeditorInfo) {
+    public Expeditor(Integer expeditorId, Policy policy, Boolean expeditorIsInsured, String expeditorInfo) {
         super(expeditorId);
         this.policy = policy;
         this.expeditorIsInsured = expeditorIsInsured;
@@ -44,8 +44,8 @@ public class Expeditor extends AbstractEntity {
         return policy;
     }
 
-    @Column(nullable = false)
-    public Byte getExpeditorIsInsured() {
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getExpeditorIsInsured() {
         return expeditorIsInsured;
     }
 

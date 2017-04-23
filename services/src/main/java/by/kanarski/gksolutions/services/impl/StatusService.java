@@ -1,7 +1,7 @@
 package by.kanarski.gksolutions.services.impl;
 
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
-import by.kanarski.gksolutions.dao.interfaces.IStatusDao;
+import by.kanarski.gksolutions.dao.interfaces.catalog.IUserStatusDao;
 import by.kanarski.gksolutions.dto.StatusDto;
 import by.kanarski.gksolutions.entities.catalog.UserStatus;
 import by.kanarski.gksolutions.services.interfaces.IStatusService;
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class StatusService extends BaseService<UserStatus, StatusDto> implements IStatusService {
 
     @Autowired
-    private IStatusDao statusDao;
+    private IUserStatusDao statusDao;
 
     public UserStatus findByStatusName(String statusName) {
         SearchFilter searchFilter = new SearchFilter()

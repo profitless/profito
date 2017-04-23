@@ -1,5 +1,7 @@
-package by.kanarski.gksolutions.dao.interfaces;
+package by.kanarski.gksolutions.dao.interfaces.registry;
 
+import by.kanarski.gksolutions.dao.interfaces.IBaseDao;
+import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.entities.registry.User;
 
 /**

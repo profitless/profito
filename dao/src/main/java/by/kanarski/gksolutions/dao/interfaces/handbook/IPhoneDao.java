@@ -1,5 +1,6 @@
-package by.kanarski.gksolutions.dao.interfaces;
+package by.kanarski.gksolutions.dao.interfaces.handbook;
 
+import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import by.kanarski.gksolutions.entities.handbook.Phone;
 
 /**

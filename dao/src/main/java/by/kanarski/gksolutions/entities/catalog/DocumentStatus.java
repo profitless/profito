@@ -31,7 +31,7 @@ public class DocumentStatus extends AbstractEntity {
         this.documentStatusName = documentStatusName;
     }
 
-    @Column(unique = true, nullable = false, length = 145)
+    @Column(nullable = false, length = 145)
     public String getDocumentStatusName() {
         return documentStatusName;
     }

@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.impl;
 
-import by.kanarski.gksolutions.dao.interfaces.IPhoneDao;
+import by.kanarski.gksolutions.dao.interfaces.handbook.IPhoneDao;
 import by.kanarski.gksolutions.entities.handbook.Phone;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

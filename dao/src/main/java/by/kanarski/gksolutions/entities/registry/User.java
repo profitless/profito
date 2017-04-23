@@ -29,7 +29,7 @@ public class User extends AbstractEntity {
     private static final long serialVersionUID = 3760054555990552525L;
     private String userEmail;
     private String userPassword;
-    private Byte userIsLocked;
+    private Boolean userIsLocked;
     private Company company;
     private String userFirstName;
     private String userFatherName;
@@ -44,7 +44,7 @@ public class User extends AbstractEntity {
     private UserStatus userUserStatus;
 
     @Builder
-    public User(Integer userId, String userEmail, String userPassword, Byte userIsLocked, Company company,
+    public User(Integer userId, String userEmail, String userPassword, Boolean userIsLocked, Company company,
                 String userFirstName, String userFatherName, String userLastName, Timestamp userCreateTime,
                 User userParent, Integer userChildQuantity, String skype, Set<Phone> phoneSet,
                 Set<UserFunction> userFunctionSet, UserStatus userUserStatus) {
@@ -75,8 +75,8 @@ public class User extends AbstractEntity {
         return userPassword;
     }
 
-    @Column(nullable = false)
-    public Byte getUserIsLocked() {
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getUserIsLocked() {
         return userIsLocked;
     }
 

@@ -28,13 +28,13 @@ public class Trailer extends AbstractEntity {
     private LoadingType loadingType;
     private TrailerType trailerType;
     private Forwarder forwarder;
-    private Byte trailerIsLeased;
+    private Boolean trailerIsLeased;
     private Date trailerLeasedTill;
     private Document document;
 
     @Builder
     public Trailer(Integer trailerId, LoadingType loadingType, TrailerType trailerType,
-                   Forwarder forwarder, Byte trailerIsLeased, Date trailerLeasedTill, Document document) {
+                   Forwarder forwarder, Boolean trailerIsLeased, Date trailerLeasedTill, Document document) {
         super(trailerId);
         this.loadingType = loadingType;
         this.trailerType = trailerType;
@@ -74,8 +74,8 @@ public class Trailer extends AbstractEntity {
         return forwarder;
     }
 
-    @Column
-    public Byte getTrailerIsLeased() {
+    @Column(columnDefinition = "TINYINT(1)")
+    public Boolean getTrailerIsLeased() {
         return trailerIsLeased;
     }
 

@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dao.impl;
 
-import by.kanarski.gksolutions.dao.interfaces.INewUserDao;
+import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public class NewUserDao extends ExtendedBaseDao<NewUser> implements INewUserDao {
+public class NewUserDao extends ExtendedBaseDao<NewUser> implements IExtendedBaseDao<NewUser> {
 
     @Autowired
     public NewUserDao(SessionFactory sessionFactory) {
