@@ -16,17 +16,17 @@ import javax.persistence.Entity;
  */
 
 @Entity
-@AttributeOverride(name = "id", column = @Column(name = "condition_name_id"))
+@AttributeOverride(name = "id", column = @Column(name = "condition_id"))
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class ConditionName extends AbstractEntity {
+public class Condition extends AbstractEntity {
 
     private static final long serialVersionUID = 2127872298558984644L;
     private String conditionName;
 
     @Builder
-    public ConditionName(Integer conditionId, String conditionName) {
+    public Condition(Integer conditionId, String conditionName) {
         super(conditionId);
         this.conditionName = conditionName;
     }

@@ -19,12 +19,13 @@ import java.io.Serializable;
 public class FirstUserDto implements Serializable {
 
     private static final long serialVersionUID = 4151799960482680421L;
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String email;
+    private String login;
     private String password;
     private String passwordConfirmation;
+    private String firstName;
+    private String fatherName;
+    private String lastName;
+    private String email;
     private String skype;
     private String phone;
 

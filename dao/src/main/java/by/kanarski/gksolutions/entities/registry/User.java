@@ -26,8 +26,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class User extends AbstractEntity {
 
-    private static final long serialVersionUID = 3760054555990552525L;
-    private String userEmail;
+    private static final long serialVersionUID = 168768732717717983L;
+    private String userLogin;
     private String userPassword;
     private Boolean userIsLocked;
     private Company company;
@@ -38,18 +38,19 @@ public class User extends AbstractEntity {
     private User userParent;
 //    private Set<User> childUsersSet;
     private Integer userChildQuantity;
+    private String userEmail;
     private String skype;
     private Set<Phone> phoneSet;
     private Set<UserFunction> userFunctionSet;
     private UserStatus userUserStatus;
 
     @Builder
-    public User(Integer userId, String userEmail, String userPassword, Boolean userIsLocked, Company company,
+    public User(Integer userId, String userLogin, String userPassword, Boolean userIsLocked, Company company,
                 String userFirstName, String userFatherName, String userLastName, Timestamp userCreateTime,
-                User userParent, Integer userChildQuantity, String skype, Set<Phone> phoneSet,
+                User userParent, Integer userChildQuantity, String userEmail, String skype, Set<Phone> phoneSet,
                 Set<UserFunction> userFunctionSet, UserStatus userUserStatus) {
         super(userId);
-        this.userEmail = userEmail;
+        this.userLogin = userLogin;
         this.userPassword = userPassword;
         this.userIsLocked = userIsLocked;
         this.company = company;
@@ -59,6 +60,7 @@ public class User extends AbstractEntity {
         this.userCreateTime = userCreateTime;
         this.userParent = userParent;
         this.userChildQuantity = userChildQuantity;
+        this.userEmail = userEmail;
         this.skype = skype;
         this.phoneSet = phoneSet;
         this.userFunctionSet = userFunctionSet;
@@ -66,8 +68,8 @@ public class User extends AbstractEntity {
     }
 
     @Column(nullable = false, length = 40)
-    public String getUserEmail() {
-        return userEmail;
+    public String getUserLogin() {
+        return userLogin;
     }
 
     @Column(nullable = false)
@@ -130,6 +132,11 @@ public class User extends AbstractEntity {
         return userChildQuantity;
     }
 
+    @Column(nullable = false, length = 40)
+    public String getUserEmail() {
+        return userEmail;
+    }
+
     @Column(unique = true)
     public String getSkype() {
         return skype;
@@ -185,5 +192,5 @@ public class User extends AbstractEntity {
         return userUserStatus;
     }
 
-    public enum Fields {userEmail, userPassword, userIsLocked, company, userFirstName, userFatherName, userLastName, userCreateTime, userParent, userChildQuantity, skype, phoneSet, userFunctionSet, userUserStatus, serialVersionUID}
+    public enum Fields {userLogin, userPassword, userIsLocked, company, userFirstName, userFatherName, userLastName, userCreateTime, userParent, userChildQuantity, userEmail, skype, phoneSet, userFunctionSet, userUserStatus, serialVersionUID}
 }
