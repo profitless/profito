@@ -71,7 +71,4 @@ public class DaoApplication {
             }
         };
     }
-
 }
-
-// FIXME: 24.04.2017 Свяжись со мной, dzmitry.kanarski@gmail.com
