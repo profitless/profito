@@ -60,25 +60,27 @@ public class UserSetting extends AbstractEntity {
         return user;
     }
 
-    @ManyToOne
-    @JoinColumn(
-            name = "country_array_id_depart",
-            nullable = false,
-            foreignKey = @ForeignKey(name = "fk_h_user_setting_h_country_array1")
-    )
-    public CountryArray getCountryArrayDepart() {
-        return countryArrayDepart;
-    }
+    // TODO: 05.05.2017 Пока уберу, конфликты есть
 
-    @ManyToOne
-    @JoinColumn(
-            name = "country_array_id_arrival",
-            nullable = false,
-            foreignKey = @ForeignKey(name = "fk_h_user_setting_h_country_array2")
-    )
-    public CountryArray getCountryArrayArrival() {
-        return countryArrayArrival;
-    }
+//    @ManyToOne
+//    @JoinColumn(
+//            name = "country_array_id_depart",
+//            nullable = false,
+//            foreignKey = @ForeignKey(name = "fk_h_user_setting_h_country_array1")
+//    )
+//    public CountryArray getCountryArrayDepart() {
+//        return countryArrayDepart;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(
+//            name = "country_array_id_arrival",
+//            nullable = false,
+//            foreignKey = @ForeignKey(name = "fk_h_user_setting_h_country_array2")
+//    )
+//    public CountryArray getCountryArrayArrival() {
+//        return countryArrayArrival;
+//    }
 
     public enum Fields {userSettingShipmentFrom, userSettingShipmentTo, user, countryArrayDepart, countryArrayArrival, serialVersionUID}
 }

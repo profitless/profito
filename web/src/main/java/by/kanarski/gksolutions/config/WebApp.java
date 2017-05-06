@@ -1,5 +1,6 @@
 package by.kanarski.gksolutions.config;
 
+import by.kanarski.gksolutions.MailConfig;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -59,7 +60,10 @@ public class WebApp extends SpringBootServletInitializer {
         return springApplicationBuilder
                 .sources(
                         WebApp.class,
-                        ServletInitializer.class)
+                        ServletInitializer.class,
+                        DaoApplication.class,
+                        MailConfig.class,
+                        ServicesApplication.class)
                 .properties(getProperties());
     }
 

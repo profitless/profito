@@ -47,5 +47,9 @@ public class Phone extends AbstractEntity {
         return phoneType;
     }
 
+    public static Phone newInstance(String phoneNumber, PhoneType phoneType) {
+        return Phone.builder().phoneNumber(phoneNumber).phoneType(phoneType).build();
+    }
+
     public enum Fields {phoneNumber, phoneType, serialVersionUID}
 }

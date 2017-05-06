@@ -3,10 +3,12 @@ package by.kanarski.gksolutions.entities.manyToMany;
 import by.kanarski.gksolutions.entities.registry.Auction;
 import by.kanarski.gksolutions.entities.registry.Company;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author Dzmitry Kanarski
@@ -16,7 +18,6 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @AssociationOverrides({
         @AssociationOverride(
                 name = "auctionCompanyPK.auction",
@@ -37,10 +38,17 @@ import javax.persistence.*;
                         )
                 ))
 })
-public class AuctionCompany {
+public class AuctionCompany implements Serializable {
 
+    private static final long serialVersionUID = 7895426086815048958L;
     private AuctionCompanyPK auctionCompanyPK;
     private Byte auctionWinner;
+
+    @Builder
+    public AuctionCompany(AuctionCompanyPK auctionCompanyPK, Byte auctionWinner) {
+        this.auctionCompanyPK = auctionCompanyPK;
+        this.auctionWinner = auctionWinner;
+    }
 
     @EmbeddedId
     public AuctionCompanyPK getAuctionCompanyPK() {
@@ -70,4 +78,5 @@ public class AuctionCompany {
         return auctionWinner;
     }
 
+    public enum Fields {auctionCompanyPK, auctionWinner, serialVersionUID}
 }

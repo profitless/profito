@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="context = ${#request.getContextPath()}">
+<head>
+    <title>Registration</title>
+    <meta charset="UTF-8" content="text/html"/>
+    <meta th:name="${_csrf.getHeaderName()}" th:content="${_csrf.token}"/>
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.css}"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.css}"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-mocks.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-cookies.js"></script>
+
+</head>
+<body>
+    <div ng-app="companyRegistrationModule">
+        <div id="companyRegistrationForm" class="page" ng-controller="companyRegistrationController as vm">
+            <form>
+                <h2>Главная информация</h2>
+                <div class="form-group">
+                    <label for="companyName">Фирменное наименование</label>
+                    <input type="text" class="form-control" id="companyName"
+                           name="companyName" ng-model="vm.company.companyName"/>
+                </div>
+                <div class="form-group">
+                    <label for="registrationNumber">УНН/УНП</label>
+                    <input type="text" class="form-control" id="registrationNumber"
+                           name="registrationNumber" ng-model="vm.company.registrationNumber"/>
+                </div>
+                <div class="form-group">
+                    <label for="legalFormId">Организационно-правовая форма</label>
+                    <input type="text" class="form-control" id="legalFormId" 
+                           name="legalFormId" ng-model="vm.company.legalFormId"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Фамилия</label>
+                    <input type="text" class="form-control" id="lastName"
+                           name="lastName" ng-model="vm.user.lastName"/>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">Имя</label>
+                    <input type="text" class="form-control" id="firstName"
+                           name="firstName" ng-model="vm.user.firstName"/>
+                </div>
+                <div class="form-group">
+                    <label for="fatherName">Отчество</label>
+                    <input type="text" class="form-control" id="fatherName"
+                           name="fatherName" ng-model="vm.user.fatherName"/>
+                </div>
+                <div class="form-group">
+                    <label for="mobilePhone">Мобильный телефон</label>
+                    <input type="text" class="form-control" id="mobilePhone"
+                           name="mobilePhone" ng-model="vm.user.mobilePhone"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Адресс e-mail</label>
+                    <input type="text" class="form-control" id="email"
+                           name="email" ng-model="vm.user.email"/>
+                </div>
+                <div class="form-group">
+                    <label for="skype">Skype</label>
+                    <input type="text" class="form-control" id="skype"
+                           name="skype" ng-model="vm.user.skype"/>
+                </div>
+                <h2>Контактная информация</h2>
+                <div class="form-group">
+                    <label for="countryId">Страна</label>
+                    <input type="text" class="form-control" id="countryId"
+                           name="countryId" ng-model="vm.company.countryId"/>
+                </div>
+                <div class="form-group">
+                    <label for="regionId">Область/Регион</label>
+                    <input type="text" class="form-control" id="regionId"
+                           name="regionId" ng-model="vm.company.regionId"/>
+                </div>
+                <div class="form-group">
+                    <label for="cityId">Город</label>
+                    <input type="text" class="form-control" id="cityId"
+                           name="cityId" ng-model="vm.company.cityId"/>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Рабочий телефон</label>
+                    <input type="text" class="form-control" id="phone"
+                           name="phone" ng-model="vm.company.phone"/>
+                </div>
+                <h2>Банковская информация</h2>
+                <div class="form-group">
+                    <label for="bankId">Наименование банка</label>
+                    <input type="text" class="form-control" id="bankId"
+                           name="bankId" ng-model="vm.company.bankAccount.bankId"/>
+                </div>
+                <div class="form-group">
+                    <label for="bankName">Наименование банка</label>
+                    <input type="text" class="form-control" id="bankName"
+                           name="bankName" ng-model="vm.company.bankAccount.bankName"/>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

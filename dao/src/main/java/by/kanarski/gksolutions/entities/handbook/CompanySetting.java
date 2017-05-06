@@ -137,7 +137,6 @@ public class CompanySetting extends AbstractEntity {
         return companySettingTenderBet;
     }
 
-    // TODO: 25.04.2017 Может и не TEXT
     @Column(columnDefinition = "TEXT")
     public String getCompanySettingAdvertise() {
         return companySettingAdvertise;

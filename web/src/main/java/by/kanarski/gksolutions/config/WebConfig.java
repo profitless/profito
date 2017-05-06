@@ -1,11 +1,14 @@
 package by.kanarski.gksolutions.config;
 
+import by.kanarski.gksolutions.MailConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -23,27 +26,12 @@ import java.util.ArrayList;
 @Configuration
 @ComponentScan("by.kanarski.gksolutions")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ImportAutoConfiguration(ServicesApplication.class)
+@ImportAutoConfiguration({ServicesApplication.class, MailConfig.class})
 @PropertySources(value = {@PropertySource("classpath:application.properties")})
-public class WebConfig {
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private ApplicationContext applicationContext;
-
-//    @Bean
-//    public ContentNegotiationManagerFactoryBean cnManager() {
-//        ContentNegotiationManagerFactoryBean contentNegotiationManagerFactoryBean =
-//                new ContentNegotiationManagerFactoryBean();
-//        contentNegotiationManagerFactoryBean.addMediaTypes(
-//                new HashMap<String, MediaType>() {
-//                    {
-//                        put("json", MediaType.APPLICATION_JSON);
-//                        put("xml", MediaType.TEXT_XML);
-//                    }
-//                }
-//        );
-//        return contentNegotiationManagerFactoryBean;
-//    }
 
     @Bean
     @Autowired
@@ -76,13 +64,11 @@ public class WebConfig {
         return engine;
     }
 
-//    @Bean
-//    public Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder() {
-//        Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder = new Jackson2ObjectMapperBuilder();
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.
-//        jackson2ObjectMapperBuilder.configure();
-//    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
 
     private ITemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();

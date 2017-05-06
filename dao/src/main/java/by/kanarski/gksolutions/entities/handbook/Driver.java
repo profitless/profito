@@ -96,7 +96,7 @@ public class Driver extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(
-            name = "forwarder_id",
+            name = "phone_id",
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_h_driver_h_phone1")
     )

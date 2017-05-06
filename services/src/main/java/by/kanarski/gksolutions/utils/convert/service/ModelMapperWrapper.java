@@ -21,14 +21,12 @@ import java.util.Set;
 public class ModelMapperWrapper {
     
     private ModelMapper modelMapper;
+    private ModelMapper looseEmptyModelMapper;
 
     @Autowired
-    public ModelMapperWrapper(ModelMapper modelMapper, List<Converter<?, ?>> converterList) {
-        if (modelMapper == null) {
-            this.modelMapper = new ModelMapper();
-        } else {
-            this.modelMapper = modelMapper;
-        }
+    public ModelMapperWrapper(ModelMapper looseEmptyModelMapper, List<Converter<?, ?>> converterList) {
+        this.looseEmptyModelMapper = looseEmptyModelMapper;
+        this.modelMapper = new ModelMapper();
         for (Converter<?, ?> converter : converterList) {
             this.modelMapper.addConverter(converter);
         }
@@ -96,6 +94,10 @@ public class ModelMapperWrapper {
             destinationSet.add(destination);
         }
         return destinationSet;
+    }
+
+    public ModelMapper defaultMapper() {
+        return this.looseEmptyModelMapper;
     }
 
 

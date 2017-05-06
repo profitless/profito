@@ -1,5 +1,6 @@
 package by.kanarski.gksolutions.config;
 
+import by.kanarski.gksolutions.webFilters.CsrfHeaderFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CsrfFilter;
 
 /**
  * @author Dzmitry Kanarski
@@ -42,7 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .and()
-                .csrf();
+                .csrf()
+//                .csrfTokenRepository(csrfTokenRepository())
+                .and()
+                .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
     }
 
     @Bean
@@ -57,5 +62,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+//    private CsrfTokenRepository csrfTokenRepository() {
+//        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+//        repository.setHeaderName("X-CSRF-TOKEN");
+//        return repository;
+//    }
+
 
 }

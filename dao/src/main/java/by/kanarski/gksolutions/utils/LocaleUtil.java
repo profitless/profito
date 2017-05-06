@@ -9,8 +9,6 @@ import java.util.Locale;
 
 public class LocaleUtil {
 
-
-
     public static String getDisplayLanguage(String languageTag) {
         return new Locale(languageTag).getDisplayLanguage();
     }

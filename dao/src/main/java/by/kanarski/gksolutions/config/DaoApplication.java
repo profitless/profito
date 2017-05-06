@@ -22,6 +22,7 @@ import java.util.Properties;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @ComponentScan("by.kanarski.gksolutions")
 @PropertySources(value = {@PropertySource("classpath:application.properties")})
+//@EntityScan({"by.kanarski.gksolutions.dto"})
 public class DaoApplication {
 
     public static void main(String[] args) {
@@ -40,12 +41,14 @@ public class DaoApplication {
     }
 
     @Bean
+    @Primary
     public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
         sessionFactoryBean.setPackagesToScan("by.kanarski.gksolutions.entities");
+//        sessionFactoryBean.setPackagesToScan("by.kanarski.gksolutions.dto");
         return sessionFactoryBean;
     }
 
@@ -67,7 +70,10 @@ public class DaoApplication {
                 setProperty("hibernate.hikari.maximumPoolSize", "20");
                 setProperty("hibernate.hikari.connectionTimeout", "30000");
                 setProperty("hibernate.hikari.idleTimeout", "60000");
-                setProperty("hibernate.hbm2ddl.auto", "create");
+                setProperty("hibernate.cache.use_second_level_cache", "true");
+                setProperty("hibernate.cache.use_query_cache", "true");
+                setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
+                setProperty("hibernate.hbm2ddl.auto", "validate");
             }
         };
     }

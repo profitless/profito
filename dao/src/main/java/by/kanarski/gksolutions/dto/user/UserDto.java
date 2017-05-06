@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.dto.user;
 
-import by.kanarski.gksolutions.constants.StateValue;
+import by.kanarski.gksolutions.constants.Roles;
 import by.kanarski.gksolutions.dto.CompanyDto;
 import by.kanarski.gksolutions.dto.PhoneDto;
 import lombok.Builder;
@@ -71,7 +71,7 @@ public class UserDto extends User {
 
     private static List<GrantedAuthority> getAnnonymous() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(StateValue.ROLE_ANONYMOUS));
+        authorities.add(new SimpleGrantedAuthority(Roles.ROLE_ANONYMOUS));
         return authorities;
     }
 

@@ -54,6 +54,7 @@ public class Company extends AbstractEntity {
     private Set<TenderCompany> tenderCompanySet;
     private Set<Phone> companyPhoneSet;
     private Set<BankAccount> companyBankAccount;
+    private CurrencyCondition currencyCondition;
 
     @Builder
     public Company(Integer companyId, Boolean companyIsLocked, String companyName, Country country,
@@ -228,7 +229,7 @@ public class Company extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(
-            name = "fact_adress_id",
+            name = "legal_form_id",
             nullable = true,
             foreignKey = @ForeignKey(name = "fk_h_company_h_legal_form1")
     )
@@ -288,6 +289,11 @@ public class Company extends AbstractEntity {
     )
     public Set<BankAccount> getCompanyBankAccount() {
         return companyBankAccount;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL)
+    public CurrencyCondition getCurrencyCondition() {
+        return currencyCondition;
     }
 
     public enum Fields {companyIsLocked, companyName, country, region, document, expeditor, forwarder, jurAdress, factAdress, postAdress, companyType, companyRegistrationNumber, companyAdditionNumber, companyTariffPlan, companyBallance, companySite, companyIsDebt, companyLockDate, companyKPI, legalForm, auctionCompanySet, tenderCompanySet, companyPhoneSet, companyBankAccount, serialVersionUID}

@@ -3,8 +3,7 @@ package by.kanarski.gksolutions.controllers;
 import by.kanarski.gksolutions.constants.Pages;
 import by.kanarski.gksolutions.constants.Parameter;
 import by.kanarski.gksolutions.dto.user.UserDto;
-import by.kanarski.gksolutions.utils.SystemLogger;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +20,15 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping(Pages.PAGE_START)
-@Log4j2
+@Slf4j
 public class IndexController {
 
-    private static final SystemLogger LOGGER = SystemLogger.getInstance().setSender(UserController.class);
 
     @Autowired
     private MessageSource messageSource;
 
     @Autowired
     private ApplicationContext applicationContext;
-
-    private SystemLogger systemLogger = SystemLogger.getInstance().setSender(getClass());
 
     @RequestMapping(value = {Pages.PAGE_INDEX, Pages.PAGE_START}, method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView toMainPage(ModelAndView modelAndView, HttpServletRequest request) {
@@ -43,8 +39,8 @@ public class IndexController {
     }
 
     @ExceptionHandler(Exception.class)
-    public String handleException(HttpServletRequest request) {
-        LOGGER.logError("ERROR");
+    public String handleException(Throwable exception) {
+        log.error(exception.getMessage(), exception);
         return Pages.PAGE_ERROR;
     }
 

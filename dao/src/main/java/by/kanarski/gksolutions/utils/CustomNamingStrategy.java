@@ -20,9 +20,11 @@ public class CustomNamingStrategy extends ImprovedNamingStrategy {
     @Override
     public String classToTableName(String className) {
         String tableNameInSingularForm = super.classToTableName(className);
-        return transform(tableNameInSingularForm, className);
+        return tableNameInSingularForm;
+//        return transform(tableNameInSingularForm, className);
     }
 
+    // TODO: 05.05.2017 Classname is\ already unqalified, и чо делать?
     private String transform(String tableNameInSingularForm, String className) {
         String packageName;
         try {

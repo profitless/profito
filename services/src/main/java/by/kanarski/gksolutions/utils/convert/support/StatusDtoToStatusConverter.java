@@ -15,8 +15,9 @@ public class StatusDtoToStatusConverter extends EntityConverter<StatusDto, UserS
 
     @Override
     public UserStatus convert(StatusDto statusDto) {
-        Integer stateId = statusDto.getStatusId();
-        String stateName = statusDto.getStatusName();
-        return UserStatus.builder().statusId(stateId).statusName(stateName).build();
+//        Integer stateId = statusDto.getStatusId();
+//        String stateName = statusDto.getStatusName();
+//        return UserStatus.builder().statusId(stateId).statusName(stateName).build();
+        return new UserStatus();
     }
 }

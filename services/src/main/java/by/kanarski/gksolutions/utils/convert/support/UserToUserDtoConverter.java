@@ -4,7 +4,6 @@ import by.kanarski.gksolutions.dto.CompanyDto;
 import by.kanarski.gksolutions.dto.PhoneDto;
 import by.kanarski.gksolutions.dto.user.UserDto;
 import by.kanarski.gksolutions.entities.registry.User;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -29,10 +28,10 @@ public class UserToUserDtoConverter extends EntityConverter<User, UserDto> {
         String skype = user.getSkype();
         Set<PhoneDto> phoneDtoSet = getMapper().map(user.getPhoneSet(), PhoneDto.class);
         CompanyDto companyDto = getMapper().map(user.getCompany(), CompanyDto.class);
-        Set<User> childUsersSet = user.getChildUsersSet();
-        Set<UserDto> childUserDtosSet = CollectionUtils.isNotEmpty(childUsersSet)
-                ? getMapper().map(childUsersSet, UserDto.class)
-                : null;
+//        Set<User> childUsersSet = user.getChildUsersSet();
+//        Set<UserDto> childUserDtosSet = CollectionUtils.isNotEmpty(childUsersSet)
+//                ? getMapper().map(childUsersSet, UserDto.class)
+//                : null;
         User parentUser = user.getUserParent();
         UserDto parentUserDto = (parentUser != null)
                 ? getMapper().map(parentUser, UserDto.class)
@@ -42,7 +41,7 @@ public class UserToUserDtoConverter extends EntityConverter<User, UserDto> {
         String userStatus = getMapper().map(user.getUserUserStatus(), String.class);
         return UserDto.builder().userId(userId).firstName(firstName).middleName(middleName).lastName(lastName)
                 .email(email).password(password).skype(skype).phoneSet(phoneDtoSet).company(companyDto)
-                .childUsersSet(childUserDtosSet).parentUser(parentUserDto).createTime(createTime).roleSet(roleSet)
+                .parentUser(parentUserDto).createTime(createTime).roleSet(roleSet)
                 .userStatus(userStatus).build();
     }
 }

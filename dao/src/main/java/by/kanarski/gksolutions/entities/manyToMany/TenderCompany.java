@@ -3,10 +3,12 @@ package by.kanarski.gksolutions.entities.manyToMany;
 import by.kanarski.gksolutions.entities.registry.Company;
 import by.kanarski.gksolutions.entities.registry.Tender;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author Dzmitry Kanarski
@@ -16,7 +18,6 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @AssociationOverrides({
         @AssociationOverride(
                 name = "tenderCompanyPK.tender",
@@ -36,11 +37,19 @@ import javax.persistence.*;
                         )
                 )),
 })
-public class TenderCompany {
+public class TenderCompany implements Serializable {
 
+    private static final long serialVersionUID = 1064055254354406649L;
     private TenderCompanyPK tenderCompanyPK;
     private Byte tenderWinner;
     private Float tenderShare;
+
+    @Builder
+    public TenderCompany(TenderCompanyPK tenderCompanyPK, Byte tenderWinner, Float tenderShare) {
+        this.tenderCompanyPK = tenderCompanyPK;
+        this.tenderWinner = tenderWinner;
+        this.tenderShare = tenderShare;
+    }
 
     @EmbeddedId
     public TenderCompanyPK getTenderCompanyPK() {
@@ -74,4 +83,6 @@ public class TenderCompany {
     public Float getTenderShare() {
         return tenderShare;
     }
+
+    public enum Fields {tenderCompanyPK, tenderWinner, tenderShare, serialVersionUID}
 }
