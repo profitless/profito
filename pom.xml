@@ -4,18 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>by.kanarski</groupId>
-	<artifactId>gksolutions</artifactId>
+	<artifactId>profito</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
 
-	<name>gksolutions</name>
+	<name>profito</name>
 	<url>http://maven.apache.org</url>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>1.5.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
