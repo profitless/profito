@@ -1,5 +1,6 @@
 package by.kanarski.profito.config;
 
+import by.kanarski.profito.utils.CustomNamingStrategy;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.SpringApplication;
@@ -7,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.*;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
@@ -55,16 +57,16 @@ public class DaoApplication {
 
 
 
-//    @Bean
-//    public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException {
-//        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-//        sessionFactoryBean.setDataSource(dataSource());
-//        sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
-//        sessionFactoryBean.setHibernateProperties(hibernateProperties());
-//        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.entities");
-////        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.dto");
-//        return sessionFactoryBean;
-//    }
+    @Bean
+    public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException {
+        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
+        sessionFactoryBean.setHibernateProperties(hibernateProperties());
+        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.entities");
+//        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.dto");
+        return sessionFactoryBean;
+    }
 
 //    @Bean
 //    public ImprovedNamingStrategy namingStrategy() {
@@ -92,7 +94,7 @@ public class DaoApplication {
                 setProperty("hibernate.cache.use_second_level_cache", "true");
                 setProperty("hibernate.cache.use_query_cache", "true");
                 setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
-                setProperty("spring.jpa.hibernate.naming.strategy", "by.kanarski.profito.utils.CustomNamingStrategy");
+                setProperty("hibernate.ejb.naming_strategy", "by.kanarski.profito.utils.CustomNamingStrategy");
                 setProperty("hibernate.hbm2ddl.auto", "create");
             }
         };

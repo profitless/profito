@@ -1,7 +1,6 @@
 package by.kanarski.profito.constants;
 
-import by.kanarski.profito.dao.interfaces.catalog.IPhoneTypeDao;
-import by.kanarski.profito.entities.catalog.PhoneType;
+import by.kanarski.profito.dao.interfacesV2.IPhoneTypeDao;
 import by.kanarski.profito.entities.handbook.Phone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +26,7 @@ public class PhoneUtils {
     public Phone buildPhone(String phoneNumber, String phoneType) {
         return Phone.builder()
                 .phoneNumber(phoneNumber)
-                .phoneType(phoneTypeDao.getBy(PhoneType.Fields.phoneTypeName.name(), phoneType))
+                .phoneType(phoneTypeDao.getByPhoneTypeName(phoneType))
                 .build();
     }
 }

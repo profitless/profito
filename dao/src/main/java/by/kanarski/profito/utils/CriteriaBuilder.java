@@ -15,12 +15,10 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  */
 
-@Component
 public class CriteriaBuilder {
 
     private SessionFactory sessionFactory;
 
-    @Autowired
     public CriteriaBuilder(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

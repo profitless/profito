@@ -8,7 +8,7 @@ import by.kanarski.profito.dto.user.FirstUserDto;
  * @author Dzmitry Kanarski
  * @version 1.0
  */
-public interface IFirstUserService  {
+public interface IFirstUserService {
 
     /**
      * Register first user.

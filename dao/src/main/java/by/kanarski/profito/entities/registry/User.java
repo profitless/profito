@@ -204,12 +204,12 @@ public class User extends AbstractEntity {
         return userStatus;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     public VerificationToken getVerificationToken() {
         return verificationToken;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     public PasswordResetToken getPasswordResetToken() {
         return passwordResetToken;
     }

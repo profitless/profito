@@ -4,12 +4,11 @@ import by.kanarski.profito.entities.registry.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,7 +26,8 @@ import java.util.Date;
 public class VerificationToken implements Serializable {
 
     public static final int EXPIRATION_TIME_IN_MINS = 24 * 60;
-    private static final long serialVersionUID = -8011631406709233043L;
+
+    private static final long serialVersionUID = 4087513937221525574L;
 
     private Integer userId;
     private User user;
@@ -48,15 +48,18 @@ public class VerificationToken implements Serializable {
     }
 
     @Id
-    @GenericGenerator(name = "generator", strategy = "foreign",
-            parameters = @Parameter(name = "property", value = "user"))
+    @GenericGenerator(
+            name = "generator",
+            strategy = "foreign",
+            parameters = @org.hibernate.annotations.Parameter(name = "property", value = "user")
+    )
     @GeneratedValue(generator = "generator")
     @Column(unique = true, nullable = false)
     public Integer getUserId() {
         return userId;
     }
 
-    @OneToOne(mappedBy = "verificationToken")
+    @OneToOne
     @PrimaryKeyJoinColumn(
             name = "user_id",
             foreignKey = @ForeignKey(name = "fk_h_verification_token_r_user1")

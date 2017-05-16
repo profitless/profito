@@ -27,7 +27,8 @@ import java.util.Date;
 public class PasswordResetToken implements Serializable {
 
     public static final int EXPIRATION_TIME_IN_MINS = 24 * 60;
-    private static final long serialVersionUID = -8011631406709233043L;
+
+    private static final long serialVersionUID = -3804339573266996922L;
 
     private Integer userId;
     private User user;
@@ -48,15 +49,18 @@ public class PasswordResetToken implements Serializable {
     }
 
     @Id
-    @GenericGenerator(name = "generator", strategy = "foreign",
-            parameters = @Parameter(name = "property", value = "user"))
+    @GenericGenerator(
+            name = "generator",
+            strategy = "foreign",
+            parameters = @Parameter(name = "property", value = "user")
+    )
     @GeneratedValue(generator = "generator")
     @Column(unique = true, nullable = false)
     public Integer getUserId() {
         return userId;
     }
 
-    @OneToOne(mappedBy = "passwordResetToken")
+    @OneToOne
     @PrimaryKeyJoinColumn(
             name = "user_id",
             foreignKey = @ForeignKey(name = "fk_h_password_reset_token_r_user1")
