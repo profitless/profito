@@ -245,6 +245,15 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
+				<plugin>
+					<groupId>com.heroku.sdk</groupId>
+					<artifactId>heroku-maven-plugin</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<appName>profitoinc</appName>
+						<warFile>web/target/web-1.0.war</warFile>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

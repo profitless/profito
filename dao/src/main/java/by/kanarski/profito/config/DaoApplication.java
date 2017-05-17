@@ -39,7 +39,7 @@ public class DaoApplication {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("com.mysql.jdbc.Driver");
         config.setJdbcUrl("jdbc:mysql://localhost/profito?autoReconnect=true&useSSL=false");
-        config.setUsername("dbadmin");
+        config.setUsername("root");
         config.setPassword("1234");
         return new HikariDataSource(config);
     }

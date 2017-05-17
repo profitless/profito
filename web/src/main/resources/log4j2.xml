@@ -32,7 +32,7 @@
             <!--<AppenderRef ref="App-File-Appender"/>-->
             <!--<AppenderRef ref="Console-Appender"/>-->
         <!--</Logger>-->
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="App-File-Appender"/>
             <AppenderRef ref="Console-Appender"/>
         </Root>
