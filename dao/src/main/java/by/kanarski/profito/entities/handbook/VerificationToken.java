@@ -48,13 +48,13 @@ public class VerificationToken implements Serializable {
     }
 
     @Id
+    @Basic
     @GenericGenerator(
             name = "generator",
             strategy = "foreign",
             parameters = @org.hibernate.annotations.Parameter(name = "property", value = "user")
     )
     @GeneratedValue(generator = "generator")
-    @Column(unique = true, nullable = false)
     public Integer getUserId() {
         return userId;
     }

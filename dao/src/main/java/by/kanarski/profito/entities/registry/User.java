@@ -34,6 +34,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Accessors(chain = true)
+@PrimaryKeyJoinColumn
 public class User extends AbstractEntity {
 
     private static final long serialVersionUID = -4621405787796919012L;

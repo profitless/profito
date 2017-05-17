@@ -95,7 +95,7 @@ public class DaoApplication {
                 setProperty("hibernate.cache.use_query_cache", "true");
                 setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
                 setProperty("hibernate.ejb.naming_strategy", "by.kanarski.profito.utils.CustomNamingStrategy");
-                setProperty("hibernate.hbm2ddl.auto", "create");
+                setProperty("hibernate.hbm2ddl.auto", "validate");
             }
         };
     }

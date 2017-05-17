@@ -71,11 +71,13 @@ public class FirstUserService implements IFirstUserService {
                 .setUserIsLocked(false);
         userDao.save(newUser);
         final String tokenValue = tokenGenerator.getUUID();
-        newUser.setVerificationToken(new VerificationToken(tokenValue));
-        userDao.save(newUser);
+        VerificationToken verificationToken = new VerificationToken(tokenValue);
+        verificationToken.setUser(newUser);
+        verificationTokenDao.save(verificationToken);
         return tokenValue;
     }
 
+    @Override
     public String activateUser(final String activationKey) {
         final VerificationToken verificationToken = verificationTokenDao.getByTokenValue(activationKey);
         if (verificationToken == null) {
@@ -87,8 +89,9 @@ public class FirstUserService implements IFirstUserService {
             return TOKEN_EXPIRED;
         }
         final User user = verificationToken.getUser();
-        user.setUserStatus(userStatusDao.getByUserStatusName(UserUtils.STATUS_ACTIVATED));
+        verificationTokenDao.delete(verificationToken);
         user.setVerificationToken(null);
+        user.setUserStatus(userStatusDao.getByUserStatusName(UserUtils.STATUS_ACTIVATED));
         userDao.save(user);
         return TOKEN_VALID;
     }
