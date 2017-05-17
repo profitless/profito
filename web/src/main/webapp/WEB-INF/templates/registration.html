@@ -1,11 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" content="text/html"/>
-    <meta th:name="${_csrf.getHeaderName()}" th:content="${_csrf.token}"/>
-    <title>Title</title>
+<head th:replace="~{imports/head :: head (${'Регистрация'})}">
+
 </head>
 <body>
-
+    <div ng-app="app">
+        <div id="companyRegistrationForm" class="page" ng-controller="UserRegistrationCtrl as uc">
+            <form>
+                <h2>Учетные данные</h2>
+                <div class="form-group">
+                    <label for="email">Адресс e-mail</label>
+                    <input type="text" class="form-control" id="email"
+                           name="email" ng-model="uc.user.email"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="text" class="form-control" id="password"
+                           name="password" ng-model="uc.user.password"/>
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirmation">Подтверждение пароля</label>
+                    <input type="text" class="form-control" id="passwordConfirmation"
+                           name="passwordConfirmation" ng-model="uc.user.passwordConfirmation"/>
+                </div>
+                <h2>Контактная информация</h2>
+                <div class="form-group">
+                    <label for="lastName">Фамилия</label>
+                    <input type="text" class="form-control" id="lastName"
+                           name="lastName" ng-model="uc.user.lastName"/>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">Имя</label>
+                    <input type="text" class="form-control" id="firstName"
+                           name="firstName" ng-model="uc.user.firstName"/>
+                </div>
+                <div class="form-group">
+                    <label for="fatherName">Отчество</label>
+                    <input type="text" class="form-control" id="fatherName"
+                           name="fatherName" ng-model="uc.user.fatherName"/>
+                </div>
+                <div class="form-group">
+                    <label for="workPhone">Рабочий телефон</label>
+                    <input type="text" class="form-control" id="workPhone"
+                           name="workPhone" ng-model="uc.user.workPhone"/>
+                </div>
+                <div class="form-group">
+                    <label for="mobilePhone">Мобильный телефон</label>
+                    <input type="text" class="form-control" id="mobilePhone"
+                           name="mobilePhone" ng-model="uc.user.mobilePhone"/>
+                </div>
+                <div class="form-group">
+                    <label for="skype">Skype</label>
+                    <input type="text" class="form-control" id="skype"
+                           name="skype" ng-model="uc.user.skype"/>
+                </div>
+                <input type="button" class="btn" value="Зарегистрировать" ng-click="uc.register()"/>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

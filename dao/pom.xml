@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>by.kanarski.gksolutions</groupId>
+	<groupId>by.kanarski.profito</groupId>
 	<artifactId>dao</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
@@ -13,7 +13,7 @@
 
 	<parent>
 		<groupId>by.kanarski</groupId>
-		<artifactId>gksolutions</artifactId>
+		<artifactId>profito</artifactId>
 		<version>1.0</version>
 	</parent>
 
@@ -34,6 +34,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>ch.qos.logback</groupId>
@@ -70,6 +80,11 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-jcl</artifactId>
 			<version>2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -4,28 +4,32 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>by.kanarski</groupId>
-	<artifactId>gksolutions</artifactId>
+	<artifactId>profito</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
 
-	<name>gksolutions</name>
+	<name>profito</name>
 	<url>http://maven.apache.org</url>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>1.5.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<modules>
 		<module>dao</module>
 		<module>services</module>
+		<module>mail</module>
 		<module>web</module>
-	</modules>
+    </modules>
 
 	<properties>
+		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>2.2.1</thymeleaf-layout-dialect.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>

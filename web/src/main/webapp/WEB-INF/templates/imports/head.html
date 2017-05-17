@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (pageTitle)">
+    <title th:text="${pageTitle}">Страница</title>
+    <meta charset="UTF-8" content="text/html"/>
+    <meta th:name="${_csrf.getHeaderName()}" th:content="${_csrf.token}"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!--CUSTOM CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
+    <!--ANGULAR MANIFEST-->
+    <script type="text/javascript" th:src="@{/resources/dist/manifest.js}"></script>
+    <!--ANGULAR VENDOR-->
+    <script type="text/javascript" th:src="@{/resources/dist/vendor.js}"></script>
+    <!--ANGULAR_MAIN-->
+    <script type="text/javascript" th:src="@{/resources/dist/bundle.js}"></script>
+</head>
+<body>
+
+</body>
+</html>
