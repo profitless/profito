@@ -16,7 +16,7 @@ public enum ThreadLocalUtil {
     private static final ThreadLocal<ThreadVariables> THREAD_VARIABLES = ThreadLocal.withInitial(ThreadVariables::new);
 
     /**
-     * Recives thread local variable for currenct enum constant
+     * Recives thread local variable for current enum constant
      * @return the thread local variable, if it is added to <i>THREAD_VARIABLES</i>,
      * otherwise null
      */
