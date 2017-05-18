@@ -1,4 +1,4 @@
-package by.kanarski.profito.services.impl;
+package by.kanarski.profito.security;
 
 import by.kanarski.profito.dto.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;

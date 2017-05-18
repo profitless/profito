@@ -1,19 +1,18 @@
 package by.kanarski.profito.config;
 
-import by.kanarski.profito.utils.CustomNamingStrategy;
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.springframework.boot.SpringApplication;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.*;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 /**
@@ -23,54 +22,52 @@ import java.util.Properties;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ComponentScan("by.kanarski.profito")
-@PropertySources(value = {@PropertySource("classpath:application.properties")})
+@EnableConfigurationProperties
 @EnableJpaRepositories(basePackages = "by.kanarski.profito.dao")
-//@EntityScan({"by.kanarski.profito.dto"})
 public class DaoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(DaoApplication.class, args);
-    }
+//    @Bean
+//    @Primary
+//    public DataSource dataSource() throws PropertyVetoException {
+//        HikariConfig config = new HikariConfig();
+//        config.setDriverClassName("com.mysql.jdbc.Driver");
+//        config.setJdbcUrl("jdbc:mysql://localhost/profito?autoReconnect=true&useSSL=false");
+//        config.setUsername("dbadmin");
+//        config.setPassword("1234");
+//        return new HikariDataSource(config);
+//    }
+
+//    @Bean
+//    @Primary
+//    @ConfigurationProperties("app.datasource")
+//    public DataSource dataSource() {
+//        return DataSourceBuilder.create()
+//                .type(HikariDataSource.class).build();
+//    }
 
     @Bean
-    @Primary
-    public DataSource dataSource() throws PropertyVetoException {
-        HikariConfig config = new HikariConfig();
-        config.setDriverClassName("com.mysql.jdbc.Driver");
-        config.setJdbcUrl("jdbc:mysql://localhost/profito?autoReconnect=true&useSSL=false");
-        config.setUsername("dbadmin");
-        config.setPassword("1234");
-        return new HikariDataSource(config);
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException {
+    @Autowired
+    @ConfigurationProperties(prefix = "spring.jpa.properties")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(HikariDataSource dataSource) {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "by.kanarski.profito.entities" });
+        em.setDataSource(dataSource);
+        em.setPackagesToScan("by.kanarski.profito.entities");
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(hibernateProperties());
+        em.setJpaProperties(hibernateProperties().getProperties());
         return em;
     }
 
-
-
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException {
-        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-        sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
-        sessionFactoryBean.setHibernateProperties(hibernateProperties());
-        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.entities");
-//        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.dto");
-        return sessionFactoryBean;
-    }
-
+//  Используется только для подсветки сущностей
 //    @Bean
-//    public ImprovedNamingStrategy namingStrategy() {
-//        return new ImprovedNamingStrategy();
+//    @Autowired
+//    public LocalSessionFactoryBean sessionFactory(HikariDataSource dataSource) {
+//        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+//        sessionFactoryBean.setDataSource(dataSource);
+//        sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
+////        sessionFactoryBean.setHibernateProperties(hibernateProperties());
+//        sessionFactoryBean.setPackagesToScan("by.kanarski.profito.entities");
+//        return sessionFactoryBean;
 //    }
 
     @Bean
@@ -78,25 +75,17 @@ public class DaoApplication {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    private Properties hibernateProperties() {
-        return new Properties() {
-            {
-                setProperty("debug", "true");
-                setProperty("hibernate.show_sql", "true");
-                setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-                setProperty("hibernate.cglib.use_reflection_optimizer", "true");
-                setProperty("hibernate.hbm2ddl.auto", "update");
-                setProperty("hibernate.hikari.autocommit", "true");
-                setProperty("hibernate.hikari.minimumIdle", "5");
-                setProperty("hibernate.hikari.maximumPoolSize", "20");
-                setProperty("hibernate.hikari.connectionTimeout", "30000");
-                setProperty("hibernate.hikari.idleTimeout", "60000");
-                setProperty("hibernate.cache.use_second_level_cache", "true");
-                setProperty("hibernate.cache.use_query_cache", "true");
-                setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
-                setProperty("hibernate.ejb.naming_strategy", "by.kanarski.profito.utils.CustomNamingStrategy");
-                setProperty("hibernate.hbm2ddl.auto", "validate");
-            }
-        };
+    @Bean
+    @ConfigurationProperties(prefix = "spring.jpa")
+    public HibernateProperties hibernateProperties() {
+        return new HibernateProperties();
     }
+
+    @Data
+    public static class HibernateProperties {
+
+        private Properties properties;
+
+    }
+
 }

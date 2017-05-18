@@ -36,6 +36,5 @@
             <AppenderRef ref="App-File-Appender"/>
             <AppenderRef ref="Console-Appender"/>
         </Root>
-        <
     </Loggers>
 </Configuration>
