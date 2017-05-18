@@ -1,6 +1,6 @@
 package by.kanarski.profito;
 
-import by.kanarski.profito.config.ServicesApplication;
+import by.kanarski.profito.config.ServicesConfig;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {ServicesApplication.class})
+@SpringBootTest(classes = {ServicesConfig.class})
 public class ModelMapperTest extends Assert {
 
 //    private ModelMapperWrapper modelMapperWrapper;

@@ -1,4 +1,4 @@
-package by.kanarski.profito.config;
+package by.kanarski.profito.security;
 
 import by.kanarski.profito.webFilters.CsrfHeaderFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,13 @@ import org.springframework.security.web.csrf.CsrfFilter;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    public SecurityConfig(UserDetailsService userDetailsService) {
+        super();
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -45,7 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .and()
                 .csrf()
-//                .csrfTokenRepository(csrfTokenRepository())
                 .and()
                 .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
     }
@@ -62,12 +66,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    private CsrfTokenRepository csrfTokenRepository() {
-//        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-//        repository.setHeaderName("X-CSRF-TOKEN");
-//        return repository;
-//    }
-
 
 }
