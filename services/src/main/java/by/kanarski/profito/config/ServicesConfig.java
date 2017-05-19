@@ -5,6 +5,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 
 @SpringBootApplication
+@ComponentScan("by.kanarski.profito")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @ImportAutoConfiguration(DaoConfig.class)
 public class ServicesConfig {

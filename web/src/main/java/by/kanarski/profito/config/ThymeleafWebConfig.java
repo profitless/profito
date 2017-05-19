@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
  */
 
 @SpringBootApplication
+@ComponentScan("by.kanarski.profito")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ThymeleafWebConfig {
 

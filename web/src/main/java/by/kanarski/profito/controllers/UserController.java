@@ -8,12 +8,10 @@ import by.kanarski.profito.utils.TokenGenerator;
 import by.kanarski.profito.wrappers.EmailConfirmationInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 /**

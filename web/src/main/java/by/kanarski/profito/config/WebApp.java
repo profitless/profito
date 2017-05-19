@@ -16,7 +16,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-import java.util.Properties;
 
 /**
  * @author Dzmitry Kanarski
@@ -34,7 +33,7 @@ public class WebApp extends SpringBootServletInitializer {
                 WebApp.class,
                 ServletInitializer.class);
         applicationBuilder
-                .properties(getProperties())
+//                .properties(getProperties())
                 .run(args);
     }
 
@@ -59,14 +58,14 @@ public class WebApp extends SpringBootServletInitializer {
         return springApplicationBuilder
                 .sources(
                         WebApp.class,
-                        ServletInitializer.class)
-                .properties(getProperties());
+                        ServletInitializer.class);
+//                .properties(getProperties());
     }
 
-    private static Properties getProperties() {
-        Properties props = new Properties();
-        props.put("spring.config.location", "classpath*:");
-        return props;
-    }
+//    private static Properties getProperties() {
+//        Properties props = new Properties();
+//        props.put("spring.config.location", "classpath*:");
+//        return props;
+//    }
 
 }
