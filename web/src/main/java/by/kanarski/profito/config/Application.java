@@ -1,6 +1,5 @@
 package by.kanarski.profito.config;
 
-import by.kanarski.profito.security.SecurityConfig;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -26,15 +25,14 @@ import javax.servlet.ServletRegistration;
 @ComponentScan("by.kanarski.profito")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @PropertySources(value = {@PropertySource("classpath:application.properties")})
-public class WebApp extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplicationBuilder applicationBuilder = new SpringApplicationBuilder(
-                WebApp.class,
-                ServletInitializer.class);
-        applicationBuilder
-//                .properties(getProperties())
-                .run(args);
+                Application.class,
+                ServletInitializer.class
+        );
+        applicationBuilder.run(args);
     }
 
     @Override
@@ -57,15 +55,8 @@ public class WebApp extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder springApplicationBuilder) {
         return springApplicationBuilder
                 .sources(
-                        WebApp.class,
+                        Application.class,
                         ServletInitializer.class);
-//                .properties(getProperties());
     }
-
-//    private static Properties getProperties() {
-//        Properties props = new Properties();
-//        props.put("spring.config.location", "classpath*:");
-//        return props;
-//    }
 
 }
