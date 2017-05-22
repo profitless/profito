@@ -1,0 +1,1 @@
+var profApp = angular.module("profApp", ["ui.router", "ngCookies"]);

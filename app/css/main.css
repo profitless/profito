@@ -1,0 +1,10 @@
+.intro {
+  color: #ffffff;
+  background-image: url("../img/bg-intro.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.intro p {
+  font-size: 1.25rem;
+  font-family: 'Exo 2', sans-serif;
+}

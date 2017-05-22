@@ -1,0 +1,16 @@
+{
+  "name": "angular-phonecat",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.6.x",
+    "angular-mocks": "1.6.x"
+  },
+  "devDependencies": {
+    "ui-router-extras": "^0.1.3"
+  }
+
+}
