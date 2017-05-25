@@ -1,6 +1,6 @@
 package by.kanarski.profito.dto.company;
 
-import by.kanarski.profito.dto.bankAccount.BankAccountDto;
+import by.kanarski.profito.dto.address.AddressDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * @author Dzmitry Kanarski
@@ -19,19 +18,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NewCompanyDto implements Serializable {
+public class CompanyInfoDto implements Serializable {
 
     private static final long serialVersionUID = 2800353908359292488L;
     private String companyName;
+    private Integer companyType;
     private String registrationNumber;
-    private Integer legalFormId;
-    private Integer countryId;
-    private Integer regionId;
-    private Integer cityId;
-    private Set<String> phoneSet;
-    private BankAccountDto bankAccount;
     private String additionNumber;
+    private Integer legalFormId;
     private MultipartFile registrationCetificate;
-
+    private MultipartFile policy;
+    private AddressDto jurAddress;
+    private AddressDto factAddress;
+    private AddressDto postAddress;
 
 }

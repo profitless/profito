@@ -1,6 +1,7 @@
 package by.kanarski.profito.controllers;
 
 import by.kanarski.profito.constants.Pages;
+import by.kanarski.profito.dto.company.CompanyInfoDto;
 import by.kanarski.profito.dto.user.ConfirmationUser;
 import by.kanarski.profito.dto.user.FirstUserDto;
 import by.kanarski.profito.ebp.events.OnRegistrationCompleteEvent;
@@ -8,7 +9,6 @@ import by.kanarski.profito.services.interfaces.IFirstUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.MessageSource;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,9 +29,6 @@ public class UserController {
 
     private IFirstUserService firstUserService;
     private ApplicationEventPublisher eventPublisher;
-
-    @Autowired
-    private MessageSource messageSource;
 
     @Autowired
     public UserController(IFirstUserService firstUserService, ApplicationEventPublisher eventPublisher) {
@@ -59,6 +56,10 @@ public class UserController {
         firstUserService.activateUser(activationKey);
         modelAndView.setViewName("confirmation");
         return modelAndView;
+    }
+
+    public void editCompanyInfo(@RequestBody CompanyInfoDto companyInfoDto) {
+
     }
 
     @ExceptionHandler
