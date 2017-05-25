@@ -14,4 +14,5 @@ public class City {
     private String cityName;
     private Region region;
 
+
 }
