@@ -1,6 +1,7 @@
 package by.kanarski.profito.services.interfaces;
 
 import by.kanarski.profito.dto.user.FirstUserDto;
+import by.kanarski.profito.dto.user.ConfirmationUser;
 
 /**
  * The interface First user service.
@@ -10,13 +11,7 @@ import by.kanarski.profito.dto.user.FirstUserDto;
  */
 public interface IFirstUserService {
 
-    /**
-     * Register first user.
-     *
-     * @param firstUserDto the first user dto
-     * @return the mail confirmation id
-     */
-    String registerUser(FirstUserDto firstUserDto);
+    ConfirmationUser registerUser(FirstUserDto firstUserDto);
 
     String activateUser(String activationKey);
 

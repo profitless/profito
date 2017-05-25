@@ -3,7 +3,6 @@ package by.kanarski.profito.mailService;
 import by.kanarski.profito.wrappers.MimeElement;
 import org.thymeleaf.context.Context;
 
-import javax.mail.MessagingException;
 import java.util.List;
 
 /**
@@ -15,9 +14,8 @@ public interface IMailSenderHelper {
 
     void sendMail(String recipientEmail, String subject, String templateName,
                   Context context, List<MimeElement> imageElementList,
-                  List<MimeElement> attachmentElementList) throws MessagingException;
+                  List<MimeElement> attachmentElementList);
 
-    void sendSimpleMail(String recipientEmail, String subject, String templateName, Context context)
-            throws MessagingException;
+    void sendSimpleMail(String recipientEmail, String subject, String templateName, Context context);
 
 }

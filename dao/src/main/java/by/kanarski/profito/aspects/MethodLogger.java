@@ -19,15 +19,13 @@ import java.util.Arrays;
 @Slf4j
 public class MethodLogger {
 
-    @Pointcut("execution(* by.kanarski.profito.*.* (..))")
+    @Pointcut("within(by.kanarski.profito..*)")
     public void method() {
 
     }
 
     @Around("method()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-//        Class<?> executor = joinPoint.getTarget().getClass();
-//        String executorName = executor.getCanonicalName();
         String signatureShort = joinPoint.getSignature().toShortString();
         String args = Arrays.asList(joinPoint.getArgs()).toString();
         log.info("Method: " + signatureShort + "| Args: " + args + "| Started");

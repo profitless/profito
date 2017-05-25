@@ -80,8 +80,6 @@ public class User extends AbstractEntity {
         this.passwordResetToken = passwordResetToken;
     }
 
-    @Builder
-
     @Column(nullable = false, length = 40)
     public String getUserEmail() {
         return userEmail;

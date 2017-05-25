@@ -6,14 +6,18 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.Properties;
 
@@ -62,6 +66,22 @@ public class DaoConfig {
     @ConfigurationProperties(prefix = "spring.jpa")
     public HibernateProperties hibernateProperties() {
         return new HibernateProperties();
+    }
+
+    @Bean
+    @Primary
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:i18n/messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean mvcValidator(MessageSource messageSource) {
+        LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean();
+        factory.setValidationMessageSource(messageSource);
+        return factory;
     }
 
     @Data

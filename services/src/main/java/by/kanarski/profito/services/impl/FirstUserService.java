@@ -5,6 +5,7 @@ import by.kanarski.profito.dao.interfacesV2.IUserDao;
 import by.kanarski.profito.dao.interfacesV2.IUserFunctionDao;
 import by.kanarski.profito.dao.interfacesV2.IUserStatusDao;
 import by.kanarski.profito.dao.interfacesV2.IVerificationTokenDao;
+import by.kanarski.profito.dto.user.ConfirmationUser;
 import by.kanarski.profito.dto.user.FirstUserDto;
 import by.kanarski.profito.entities.catalog.UserFunction;
 import by.kanarski.profito.entities.handbook.VerificationToken;
@@ -57,7 +58,7 @@ public class FirstUserService implements IFirstUserService {
     }
 
     @Override
-    public String registerUser(final FirstUserDto firstUserDto) {
+    public ConfirmationUser registerUser(final FirstUserDto firstUserDto) {
         final String passwordHash = passwordEncoder.encode(firstUserDto.getPassword());
         final User newUser = modelMapper.map(firstUserDto, User.class);
         newUser
@@ -70,11 +71,7 @@ public class FirstUserService implements IFirstUserService {
                 .setUserStatus(userStatusDao.getByUserStatusName(UserUtils.STATUS_UNACTIVATED))
                 .setUserIsLocked(false);
         userDao.save(newUser);
-        final String tokenValue = tokenGenerator.getUUID();
-        VerificationToken verificationToken = new VerificationToken(tokenValue);
-        verificationToken.setUser(newUser);
-        verificationTokenDao.save(verificationToken);
-        return tokenValue;
+        return createConfirmationUser(createVerificationToken(newUser));
     }
 
     @Override
@@ -94,6 +91,19 @@ public class FirstUserService implements IFirstUserService {
         user.setUserStatus(userStatusDao.getByUserStatusName(UserUtils.STATUS_ACTIVATED));
         userDao.save(user);
         return TOKEN_VALID;
+    }
+
+    private VerificationToken createVerificationToken(User newUser) {
+        final String tokenValue = tokenGenerator.getUUID();
+        final VerificationToken verificationToken = new VerificationToken(tokenValue, newUser);
+        verificationTokenDao.save(verificationToken);
+        return verificationToken;
+    }
+
+    private ConfirmationUser createConfirmationUser(VerificationToken verificationToken) {
+        User user = verificationToken.getUser();
+        user.setVerificationToken(verificationToken);
+        return modelMapper.map(user, ConfirmationUser.class);
     }
 
 }

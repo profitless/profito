@@ -1,10 +1,7 @@
 package by.kanarski.profito.entities.catalog;
 
 import by.kanarski.profito.entities.AbstractEntity;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
