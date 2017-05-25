@@ -34,27 +34,35 @@ public class MailSenderHelper implements IMailSenderHelper {
     @Override
     public void sendMail(String recipientEmail, String subject, String templateName,
                          Context context, List<MimeElement> imageElementList,
-                         List<MimeElement> attachmentElementList) throws MessagingException {
-        MimeMessageHelper message = createSimpleMessage(recipientEmail, subject, templateName, context);
-        if (CollectionUtils.isNotEmpty(imageElementList)) {
-            for (MimeElement imageElement : imageElementList) {
-                message.addInline(imageElement.getName(),
-                        new ByteArrayResource(imageElement.getContent()), imageElement.getContentType());
+                         List<MimeElement> attachmentElementList) {
+        try {
+            MimeMessageHelper message = createSimpleMessage(recipientEmail, subject, templateName, context);
+            if (CollectionUtils.isNotEmpty(imageElementList)) {
+                for (MimeElement imageElement : imageElementList) {
+                    message.addInline(imageElement.getName(),
+                            new ByteArrayResource(imageElement.getContent()), imageElement.getContentType());
+                }
             }
-        }
-        if (CollectionUtils.isNotEmpty(attachmentElementList)) {
-            for (MimeElement attachmentElement : attachmentElementList) {
-                message.addAttachment(attachmentElement.getName(),
-                        new ByteArrayResource(attachmentElement.getContent()), attachmentElement.getContentType());
+            if (CollectionUtils.isNotEmpty(attachmentElementList)) {
+                for (MimeElement attachmentElement : attachmentElementList) {
+                    message.addAttachment(attachmentElement.getName(),
+                            new ByteArrayResource(attachmentElement.getContent()), attachmentElement.getContentType());
+                }
             }
+            this.mailSender.send(message.getMimeMessage());
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
-        this.mailSender.send(message.getMimeMessage());
     }
 
-    public void sendSimpleMail(String recipientEmail, String subject, String templateName, Context context)
-            throws MessagingException  {
-        MimeMessageHelper message = createSimpleMessage(recipientEmail, subject, templateName, context);
-        this.mailSender.send(message.getMimeMessage());
+    @Override
+    public void sendSimpleMail(String recipientEmail, String subject, String templateName, Context context) {
+        try {
+            MimeMessageHelper message = createSimpleMessage(recipientEmail, subject, templateName, context);
+            this.mailSender.send(message.getMimeMessage());
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private MimeMessageHelper createSimpleMessage(String recipientEmail, String subject,

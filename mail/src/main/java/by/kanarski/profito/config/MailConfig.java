@@ -1,9 +1,9 @@
-package by.kanarski.profito;
+package by.kanarski.profito.config;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -18,12 +18,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @SpringBootApplication
 @ComponentScan("by.kanarski.profito")
-//@PropertySources(value = {@PropertySource("classpath:application.properties")})
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class MailConfig {
-
-    public static void main(String[] args) {
-        SpringApplication.run(MailConfig.class, args);
-    }
 
     @Bean
     public ResourceBundleMessageSource emailMessageSource() {

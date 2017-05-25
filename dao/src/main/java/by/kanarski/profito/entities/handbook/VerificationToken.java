@@ -42,8 +42,9 @@ public class VerificationToken implements Serializable {
         this.tokenExpiryDate = tokenExpiryDate;
     }
 
-    public VerificationToken(String tokenValue) {
+    public VerificationToken(String tokenValue, User user) {
         this.tokenValue = tokenValue;
+        this.user = user;
         this.tokenExpiryDate = calculateExpiryDate(EXPIRATION_TIME_IN_MINS);
     }
 
@@ -91,4 +92,13 @@ public class VerificationToken implements Serializable {
         this.tokenExpiryDate = calculateExpiryDate(EXPIRATION_TIME_IN_MINS);
     }
 
+    @Override
+    public String toString() {
+        return "VerificationToken{" +
+                "userId=" + userId +
+                ", user id=" + user.getId() +
+                ", tokenValue='" + tokenValue + '\'' +
+                ", tokenExpiryDate=" + tokenExpiryDate +
+                '}';
+    }
 }

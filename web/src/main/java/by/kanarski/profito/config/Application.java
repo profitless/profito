@@ -15,7 +15,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-import java.util.Properties;
 
 /**
  * @author Dzmitry Kanarski
@@ -26,15 +25,14 @@ import java.util.Properties;
 @ComponentScan("by.kanarski.profito")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @PropertySources(value = {@PropertySource("classpath:application.properties")})
-public class WebApp extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplicationBuilder applicationBuilder = new SpringApplicationBuilder(
-                WebApp.class,
-                ServletInitializer.class);
-        applicationBuilder
-                .properties(getProperties())
-                .run(args);
+                Application.class,
+                ServletInitializer.class
+        );
+        applicationBuilder.run(args);
     }
 
     @Override
@@ -57,15 +55,8 @@ public class WebApp extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder springApplicationBuilder) {
         return springApplicationBuilder
                 .sources(
-                        WebApp.class,
-                        ServletInitializer.class)
-                .properties(getProperties());
-    }
-
-    private static Properties getProperties() {
-        Properties props = new Properties();
-        props.put("spring.config.location", "classpath*:");
-        return props;
+                        Application.class,
+                        ServletInitializer.class);
     }
 
 }

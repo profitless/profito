@@ -1,10 +1,10 @@
-package by.kanarski.profito.wrappers;
+package by.kanarski.profito.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Locale;
+import java.io.Serializable;
 
 /**
  * @author Dzmitry Kanarski
@@ -14,10 +14,9 @@ import java.util.Locale;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmailConfirmationInfo {
+public class ConfirmationUser implements Serializable {
 
     private String email;
-    private String activationKey;
-    private Locale locale;
+    private String token;
 
 }
