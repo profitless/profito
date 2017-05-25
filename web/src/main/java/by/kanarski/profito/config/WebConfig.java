@@ -75,5 +75,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setApplicationContext(applicationContext);
         return resolver;
     }
-
 }

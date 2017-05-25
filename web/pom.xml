@@ -129,16 +129,15 @@
 								</goals>
 								<configuration>
 									<server>tomcat8</server>
-									<url>http://localhost:8085/manager/text</url>
+									<url>http://localhost:8080/manager/text</url>
 									<path>/${project.build.finalName}</path>
 									<update>true</update>
 								</configuration>
 							</execution>
 						</executions>
 						<configuration>
-							<port>8082</port>
-							<server>tomcat8</server>
-							<url>http://localhost:8085/manager/text</url>
+							<port>8080</port>
+							<url>http://localhost:8080/manager/text</url>
 							<path>/${project.build.finalName}</path>
 							<update>true</update>
 						</configuration>

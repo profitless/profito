@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -jar webapp/target/dependency/jetty-runner.jar --port $PORT webapp/target/*.war
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar web/target/profito.war

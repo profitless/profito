@@ -14,6 +14,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 /**
@@ -35,17 +37,22 @@ public class DaoApplication {
 
     @Bean
     @Primary
-    public DataSource dataSource() throws PropertyVetoException {
+    public DataSource dataSource() throws PropertyVetoException, URISyntaxException {
         HikariConfig config = new HikariConfig();
+        URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+
         config.setDriverClassName("com.mysql.jdbc.Driver");
-        config.setJdbcUrl("jdbc:mysql://localhost/profito?autoReconnect=true&useSSL=false");
-        config.setUsername("root");
-        config.setPassword("1234");
+        config.setJdbcUrl(dbUrl);
+        config.setUsername(username);
+        config.setPassword(password);
         return new HikariDataSource(config);
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException, URISyntaxException {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[] { "by.kanarski.profito.entities" });
@@ -58,7 +65,7 @@ public class DaoApplication {
 
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException {
+    public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException, URISyntaxException {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
