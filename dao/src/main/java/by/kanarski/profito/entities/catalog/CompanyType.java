@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.omg.CORBA.INTERNAL;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -21,6 +22,10 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class CompanyType extends AbstractEntity {
+
+    public static final Integer CUSTOMER = 1;
+    public static final Integer FORWARDER = 2;
+    public static final Integer EXPEDITOR = 3;
 
     private static final long serialVersionUID = 2620672492276264928L;
     private String companyTypeName;
