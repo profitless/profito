@@ -8,18 +8,20 @@ import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.base.Country;
 import com.vk.api.sdk.objects.database.City;
+import com.vk.api.sdk.objects.database.Region;
 import com.vk.api.sdk.objects.database.responses.GetCitiesResponse;
 import com.vk.api.sdk.objects.database.responses.GetCountriesResponse;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Project: GKsolution
  * Created by: dmitry pintusov
  * Date: 25.05.17.
  */
-public class VkAPI {
+public class VkAPI implements GeoService {
 	private static Logger logger = Logger.getLogger(VkAPI.class);
 	private final static int CLIENT_ID = 6045588;
 	private final static String CLIENT_SECRET = "zHmlvwmPE9CMdSaVGqWK";
@@ -85,5 +87,55 @@ public class VkAPI {
 		} catch (ClientException e) {
 			logger.error(e);
 		}
+	}
+
+	@Override
+	public Country getCountryById(Integer countryId, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public Country getCountryByCode(String countryCode, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public Region getRegionById(Integer regionId, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public List<Region> getRegionByCountry(Country country, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public City getCityById(Integer cityId, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public List<City> getCityByCountry(Country country, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public List<City> getCityByRegion(Region region, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public List<Country> getNearestCountries(Integer count, Country baseCountry, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public List<Region> getNearestRegions(Integer count, Region baseRegion, Locale locale) {
+		return null;
+	}
+
+	@Override
+	public List<City> getNearestCity(Integer count, City baseCity, Locale locale) {
+		return null;
 	}
 }

@@ -1,5 +1,9 @@
 package by.kanarski.profito.interf;
 
+import com.vk.api.sdk.objects.base.Country;
+import com.vk.api.sdk.objects.database.City;
+import com.vk.api.sdk.objects.database.Region;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -17,7 +21,7 @@ public interface GeoService {
      * Gets country by id.
      *
      * @param countryId the country id
-     * @param locale    the locale
+     * @param locale the locale
      * @return the country by id
      */
     Country getCountryById(Integer countryId, Locale locale);
@@ -26,7 +30,7 @@ public interface GeoService {
      * countryCode можно получать через Locale.getISOCountries()
      *
      * @param countryCode the country code
-     * @param locale      the locale
+     * @param locale the locale
      * @return the country by code
      */
     Country getCountryByCode(String countryCode, Locale locale);
@@ -35,7 +39,7 @@ public interface GeoService {
      * Gets region by id.
      *
      * @param regionId the region id
-     * @param locale   the locale
+     * @param locale the locale
      * @return the region by id
      */
     Region getRegionById(Integer regionId, Locale locale);
@@ -47,7 +51,7 @@ public interface GeoService {
      * @param locale  the locale
      * @return the region by country
      */
-    List<Region> getRegionByCountry(Country country, Locale locale);
+    List<Region> getRegionByCountry (Country country, Locale locale);
 
     /**
      * Gets city by id.
@@ -56,7 +60,7 @@ public interface GeoService {
      * @param locale the locale
      * @return the city by id
      */
-    City getCityById(Integer cityId, Locale locale);
+    City getCityById (Integer cityId, Locale locale);
 
     /**
      * Gets city by country.
@@ -91,9 +95,9 @@ public interface GeoService {
     /**
      * Gets nearest regions.
      *
-     * @param count      the count
+     * @param count the count
      * @param baseRegion the base region
-     * @param locale     the locale
+     * @param locale  the locale
      * @return the nearest regions
      */
     List<Region> getNearestRegions(Integer count, Region baseRegion, Locale locale);
@@ -101,9 +105,9 @@ public interface GeoService {
     /**
      * Gets nearest city.
      *
-     * @param count    the count
+     * @param count the count
      * @param baseCity the base city
-     * @param locale   the locale
+     * @param locale the locale
      * @return the nearest city
      */
     List<City> getNearestCity(Integer count, City baseCity, Locale locale);
